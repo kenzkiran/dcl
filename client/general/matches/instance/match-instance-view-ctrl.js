@@ -161,6 +161,7 @@ module.exports = function ($log, $rootScope, $scope, $timeout, $stateParams, $fi
      * @param match
      */
     function extractMatchDetails(match) {
+        console.log(match);
         _teamOne = match.teamOne;
         _teamTwo = match.teamTwo;
         $scope.teams.push(angular.copy(match.teamOne));

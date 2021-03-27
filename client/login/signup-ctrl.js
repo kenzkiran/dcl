@@ -81,7 +81,13 @@ module.exports = function ($rootScope, $scope, Player, $log, ModalService, Terms
         if ($rootScope.isAdmin()) {
           $state.go('players.editprofile', { id: user.id });
         } else {
-          $state.go('players.editprofile', { id: user.id });
+          var successModel = ModalService.loadingModal('SignUp Sucess!', () => {
+            $state.go('signin');
+          });
+          setTimeout(()=>{ 
+            successModel.dismiss('Finished Submitting');
+            $state.go('signin');
+          }, 2000);
         }
       }
       $scope.showResult = true;
