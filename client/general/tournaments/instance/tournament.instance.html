@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-12 tournament-instance-header">
+        <span class="tournament-name"> {{tournament.name}} </span>
+            <span id='tstatus'
+                  ng-class="{'status': true, 'status-abandoned': 'ABANDONED' == tournament.status, 'status-ongoing': 'ONGOING'== tournament.status, 'status-completed': 'COMPLETED' == tournament.status}"
+                  class="pull-right"> {{tournament.status}} </span>
+        <div><span class="info">{{tournament.tourneyType}} | {{tournament.matchType}} | {{tournament.division}} | {{tournament.gameType}} | {{tournament.ageGroup}}  | {{tournament.gender}}</span>
+            <span class="info"> | Start Date:  {{tournament.startDate | date:'dd-MMMM-yyyy'}}  End Date:  {{tournament.endDate || 'TBD' | date: 'dd-MMMM-yyyy'}} </span>
+        </div>
+    </div>
+</div>
+
+<div>
+    <br/>
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a ui_sref="tournaments.instance.matches">Matches</a></li>
+        <li role="presentation"><a ui_sref="tournaments.instance.stats">Stats</a></li>
+        <li role="presentation"><a ui_sref="tournaments.instance.standings">Standings</a></li>
+    </ul>
+    <div ui-view></div>
+</div>

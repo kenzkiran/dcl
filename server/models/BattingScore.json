@@ -1,0 +1,72 @@
+{
+    "name": "BattingScore",
+    "strict": true,
+    "properties": {
+        "id": {
+            "type": "number",
+            "id": true,
+            "generated": true,
+            "doc": "Unique Batting Score Id"
+        },
+        "sequence": {
+            "type": "number",
+            "default": 0,
+            "doc": "Sequence of the batsman"
+        },
+        "status": {
+            "type": "string",
+            "default": "DNB",
+            "doc": "Caught/Bowled/NotOut/DNB/RunOut/Stumped"
+        },
+        "runs": {
+            "type": "number",
+            "default": 0,
+            "doc": "The runs scored"
+        },
+        "balls": {
+            "type": "number",
+            "default": 0,
+            "doc": "The number of balls taken to score"
+        },
+        "four": {
+            "type": "number",
+            "default": 0,
+            "doc": "The number of 4s"
+        },
+        "six": {
+            "type": "number",
+            "default": 0,
+            "doc": "The number of 6s"
+        }
+    },
+    "relations": {
+        "batsman": {
+            "model": "Player",
+            "type": "belongsTo",
+            "foreignKey": "batsmanId"
+        },
+        "fielder": {
+            "model": "Player",
+            "type": "belongsTo",
+            "foreignKey": "fielderId"
+        },
+        "bowler": {
+            "model": "Player",
+            "type": "belongsTo",
+            "foreignKey": "bowlerId"
+        },
+        "inning": {
+            "model": "Inning",
+            "type": "belongsTo",
+            "foreignKey": "inningId"
+        },
+        "tournament": {
+          "model": "Tournament",
+          "type": "belongsTo",
+          "foreignKey": "tournamentId"
+        }
+    },
+    "options": {
+        "strict": true
+    }
+}

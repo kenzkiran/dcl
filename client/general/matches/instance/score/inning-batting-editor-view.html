@@ -1,0 +1,22 @@
+<uib-accordion-group is-open="inning.battingPanel" panel-class="panel-info">
+    <uib-accordion-heading><strong> {{inning.order}} Innings : Batting : {{inning.battingTeam.name}} </strong> <i
+            class="pull-right glyphicon"
+            ng-class="{'glyphicon-chevron-down': inning.battingPanel, 'glyphicon-chevron-right': !inning.battingPanel}"></i>
+    </uib-accordion-heading>
+    <table class="table table-condensed table-striped">
+        <tr>
+            <th class="text-center">#</th>
+            <th class="col-md-2 col-sm-2 score-col text-center">Batsman</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">Status</th>
+            <th class="col-md-2 col-sm-2 score-col text-center">Fielder</th>
+            <th class="col-md-2 col-sm-2 score-col text-center">Bowler</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">Runs</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">Balls</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">Fours</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">Sixes</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">StrikeRate</th>
+        </tr>
+        <tr index="$index" inning="inning" batting-score="battingScore" ng-repeat="battingScore in inning.battingScores"
+            ptf-batting-score></tr>
+    </table>
+</uib-accordion-group>

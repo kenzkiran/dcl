@@ -1,0 +1,11 @@
+<div class="modal-header">
+    <h3 class="modal-title"> Ground: {{ground.name}}  </h3>    
+</div>
+<div class="modal-body">
+    <div><span class="info-bold">Address:</span> {{ground.address}}, {{ground.city}}</div>   
+    <br/> 
+    <iframe src="{{ground.url}}" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="cancel()">Close</button>
+</div>

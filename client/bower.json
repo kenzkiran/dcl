@@ -1,0 +1,32 @@
+{
+  "name": "client",
+  "version": "0.0.0",
+  "authors": [
+    "Ravikiran Ramachandra <rramachandra@blackberry.com>"
+  ],
+  "description": "dcl-client",
+  "main": "index.html",
+  "keywords": [
+    "dcl",
+    "cricket"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-animate": "~1.4.7",
+    "angular-cookies": "1.4.7",
+    "angular-bootstrap": "~0.14.1",
+    "angular-resource": "~1.4.7",
+    "angular-ui-router": "ui-router#~0.2.15",
+    "bootstrap": "^3.3.6",
+    "underscore": "^1.8.3"
+  }
+}

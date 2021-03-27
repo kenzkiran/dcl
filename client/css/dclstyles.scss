@@ -1,0 +1,19 @@
+@import 'dcl-base';
+@import 'tournament';
+@import 'announcement';
+@import 'teams';
+@import 'match';
+@import 'ground';
+@import 'player';
+@import 'login';
+@import 'registrations';
+
+/* over ride glyphicons' 1px top setting because we position*/
+.glyphicon {
+  top: -2px;
+}
+
+body {
+  padding-bottom: 50px;
+}
+

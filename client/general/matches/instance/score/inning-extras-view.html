@@ -1,0 +1,65 @@
+<uib-accordion-group is-open="inning.extrasPanel" panel-class="panel-danger">
+    <uib-accordion-heading><strong> {{inning.order}} Innings : Totals </strong> <i class="pull-right glyphicon"
+                                                                                   ng-class="{'glyphicon-chevron-down': inning.extrasPanel, 'glyphicon-chevron-right': !inning.extrasPanel}"></i>
+    </uib-accordion-heading>
+    <div class="row">
+        <form class="form-inline" style="margin:10px;">
+            <div class="form-group">
+                <label for="byes">Byes</label>
+                <input type="number" class="form-control" ng-model="extras.byes" min="0" style="width: 90px;">
+            </div>
+            +
+            <div class="form-group">
+                <label for="legbyes">LegByes</label>
+                <input type="number" class="form-control" ng-model="extras.legbyes" min="0" style="width: 90px;">
+            </div>
+            +
+            <div class="form-group">
+                <label for="totalNoballs">Noballs</label>
+                <input type="number" class="form-control" ng-model="inning.scoreTotals.totalNoballs" min="0"
+                       style="width: 90px;" disabled>
+            </div>
+            +
+            <div class="form-group">
+                <label for="totalWides">Wides</label>
+                <input type="number" class="form-control" ng-model="inning.scoreTotals.totalWides" min="0"
+                       style="width: 90px;" disabled>
+            </div>
+            =
+            <div class="form-group">
+                <label for="Extras">Extras</label>
+                <input type="number" class="form-control" ng-model="inning.scoreTotals.extrasTotal" min="0"
+                       style="width: 90px;" disabled>
+            </div>
+            +
+            <div class="form-group">
+                <label for="totalRuns">Runs</label>
+                <input type="number" class="form-control" ng-model="inning.scoreTotals.totalRuns" min="0"
+                       style="width: 90px;" disabled>
+            </div>
+            =
+            <div class="form-group">
+                <label for="total"><strong>Total Score</strong></label>
+                <input type="number" class="form-control" ng-model="inning.scoreTotals.total" min="0"
+                       style="width: 100px;" disabled>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <form class="form-inline" style="margin:10px;">
+            <div class="form-group">
+                <label for="maxovers"> Max Overs</label>
+                <input type="number" ng-model="inning.maxOvers" class="form-control" min="1" max="999">
+            </div>
+            <div class="form-group">
+                <label for="revisedtotal" style="margin-left: 10px;">Revised Total</label>
+                <input type="number" ng-model="inning.revisedTotal" class="form-control" min="0" style="width: 100px;">
+            </div>
+            <div class="form-group" ng-class="{'has-error': inning.revisedTotal != inning.scoreTotals.total}">
+                <label for="notes"> Notes</label>
+                <input type="text" ng-model="inning.notes" class="form-control"
+                       placeholder='Please enter a reason for revised total!' style="width: 420px;">
+            </div>
+        </form>
+    </div>
+</uib-accordion-group>

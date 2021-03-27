@@ -1,0 +1,39 @@
+<div>
+    <div class="row">
+        <div class="col-md-10 tournament-instance-header">
+            <span class="tournament-name"> {{tournament.name}} </span>
+            <span id='tstatus'
+                  ng-class="{'status': true, 'status-abandoned': 'ABANDONED' == tournament.status, 'status-ongoing': 'ONGOING'== tournament.status, 'status-completed': 'COMPLETED' == tournament.status}"
+                  class="pull-right"> {{tournament.status}} </span>
+            <div><span class="info">{{tournament.tourneyType}} | {{tournament.matchType}} | {{tournament.division}} | {{tournament.gameType}} | {{tournament.ageGroup}}  | {{tournament.gender}} </span>
+                <span class="info"> | Start Date:  {{tournament.startDate | date:'dd-MMMM-yyyy'}}  End Date:  {{tournament.endDate || 'TBD' | date: 'dd-MMMM-yyyy'}} </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 tool-container">
+        <div class="tool-info">
+         <span class="glyphicon glyphicon-plus-sign lefty"  uib-tooltip="Add Match" aria-hidden="true" ng-click="add()"></span>
+            <button class="btn btn-primary letterBtn lefty" uib-tooltip="Manage Teams" aria-hidden="true" ng-click="manageTeams()">
+                <i class="glyphicon glyphicon-cog"></i> Teams
+            </button>
+            <button class="btn btn-primary letterBtn lefty" uib-tooltip="Manage Penalties" aria-hidden="true" ng-click="managePenalties()">
+                <i class="glyphicon glyphicon-cog"></i> Penalties
+            </button>
+            <input type="text" class="searchbox pull-right" placeholder="Search by Team Name" ng-model="searchText">
+            <div class="pull-right">
+                <label uib-tooltip="Search Teams & Umpiring"><input type="radio" ng-model="searchCategory" value="both" ng-init="searchCategory='both'"> Both</label>
+                <label uib-tooltip="Search Umpire Only"> <input type="radio" ng-model="searchCategory" value="umpire"> Umpire Only</label>
+                <label uib-tooltip="Search Teams Only"><input type="radio" ng-model="searchCategory" value="team"> Teams Only </label>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <h2>Teams:</h2>
+        <span ng-repeat="team in tourneyTeams"> {{team.name}}</span>
+    </div>
+    <div ng-repeat="m in matches | ptfSearchMatch:searchText:searchCategory">
+        <div class="row" match='m' highlight="highlight(text)" on-edit="add(match)" toggle-lock="toggleLock(match)" ptf-match-list></div>
+    </div>
+</div>

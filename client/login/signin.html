@@ -1,0 +1,21 @@
+<div class="wrapper">
+    <form class="form-signin">
+        <h2 class="form-signin-heading">Please login</h2>
+
+        <div ng-class="{'has-error': checkEmail()}">
+            <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus=""
+                ng-model="user.email" />
+        </div>
+        <input type="password" class="form-control" name="password" placeholder="Password" required=""
+            ng-model="user.password" />
+        <button class="btn btn-lg btn-primary btn-block" type="submit"
+            ng-class="{disabled: !(!checkEmail() && user.password)}" ng-click="signin()">Login</button>
+        <br />
+        <div>
+            <span ng-if="showResult"> {{statusString}}</span>
+        </div>
+        <a ui-sref="signup">New User Registration</a>
+        <br />
+        <a ui-sref="requestresetpassword">Reset Password</a>
+    </form>
+</div>

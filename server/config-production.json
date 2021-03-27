@@ -1,0 +1,14 @@
+{
+  "restApiRoot": "/api",
+  "host": "167.172.214.28",
+  "port": 80,
+  "url": "http://167.172.214.28:80/",
+  "legacyExplorer": false,
+  "bloggerBlogId": "5647976881277887395",
+  "logoutSessionsOnSensitiveChanges": true,
+  "remoting": {
+    "errorHandler": {
+      "disableStackTrace": false
+    }
+  }
+}

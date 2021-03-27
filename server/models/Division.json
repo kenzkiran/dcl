@@ -1,0 +1,32 @@
+{
+  "name": "Division",
+  "strict": true,
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "doc": "Unique Division Id"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "doc": "A/B/C/D"
+    },
+    "gameType": {
+      "type": "string",
+      "required": true,
+      "doc": "Tape, Leather"
+    }
+  },
+  "relations": {
+    "teams": {
+      "model": "Team",
+      "type": "hasMany"
+    }
+  },
+  "options": {
+    "strict": true
+  },
+  "hidden": ["created"]
+}

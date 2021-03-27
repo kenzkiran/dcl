@@ -1,0 +1,16 @@
+<div class="row">
+    <table class="table table-condensed table-striped">
+        <tr>
+            <th class="col-md-4 text-left">Name</th>
+            <th class="col-md-4 text-center">Active?</th>
+            <th class="col-md-4 text-center">Certified?</th>
+        </tr>
+        <tr ng-repeat="player in players">
+            <td class="col-md-4 text-left">
+                <a ui-sref="players.instance({id: player.id})" class="player-name">{{player.firstName}}&nbsp;&nbsp;{{player.lastName}}</a>
+            </td>
+            <td class="col-md-4 text-center">{{(player.active ? "Yes" : "No")}}</td>
+            <td class="col-md-4 text-center">{{(player.certified ? "Yes" : "No")}}</td>
+        </tr>
+    </table> 
+</div>

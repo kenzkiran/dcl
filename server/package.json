@@ -1,0 +1,44 @@
+{
+  "name": "dclserver",
+  "version": "0.0.0",
+  "main": "server.js",
+  "scripts": {
+    "pretest": "jshint .",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "compression": "^1.7.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
+    "errorhandler": "^1.1.1",
+    "googleapis": "^14.0.0",
+    "loopback": "^3.0.0",
+    "loopback-boot": "^2.27.1",
+    "loopback-connector-mongodb": "^1.13.0",
+    "loopback-datasource-juggler": "2.39.0",
+    "loopback-explorer": "^1.7.2",
+    "mongodb": "^2.2.36",
+    "path": "^0.12.7",
+    "q": "^1.5.1",
+    "serve-favicon": "^2.5.0",
+    "strong-error-handler": "^3.2.0",
+    "underscore": "^1.9.1"
+  },
+  "optionalDependencies": {
+    "loopback-explorer": "^1.1.0"
+  },
+  "devDependencies": {
+    "async": "^2.6.1",
+    "chai": "^2.3.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-jscs-checker": "^0.8.1",
+    "grunt-mocha-test": "^0.12.7",
+    "jit-grunt": "^0.9.1",
+    "jshint-stylish": "^1.0.2",
+    "mocha": "^2.2.5",
+    "supertest": "^1.0.1",
+    "time-grunt": "^1.2.1"
+  }
+}

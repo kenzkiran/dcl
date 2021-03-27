@@ -1,0 +1,27 @@
+<uib-accordion-group is-open="inning.bowlingPanel" panel-class="panel-primary">
+    <uib-accordion-heading><strong> {{inning.order}} Innings : Bowling : {{inning.bowlingTeam.name}} </strong><i
+            class="pull-right glyphicon"
+            ng-class="{'glyphicon-chevron-down': inning.bowlingPanel, 'glyphicon-chevron-right': !inning.bowlingPanel}"></i>
+    </uib-accordion-heading>
+    <table class="table table-condensed table-striped">
+        <tr>
+            <th class="text-center">#</th>
+            <th class="col-md-2 score-col text-center">Bowler</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">Overs</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">Balls</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">Maidens</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">Runs</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">Wickets</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">Wides</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">Noballs</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">Fours</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">Sixes</th>
+            <th class="col-md-1 col-sm-1 score-col text-center">Economy</th>
+        </tr>
+        <tr index="$index" inning="inning" bowling-score="bowlingScore" ng-repeat="bowlingScore in inning.bowlingScores"
+            ptf-bowling-score></tr>
+    </table>
+    <div class="text-center">
+        <span class="glyphicon glyphicon-plus-sign dcl-top-header-icon" data-placement="top" data-toggle="tooltip"
+              title="Add Bowler" ng-click="addBowler()"> </span>
+    </div>

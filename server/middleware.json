@@ -1,0 +1,43 @@
+{
+  "initial:before": {
+  },
+  "initial": {
+    "compression": {},
+    "cors": {
+      "params": {
+        "origin": true,
+        "credentials": true,
+        "maxAge": 86400
+      }
+    }
+  },
+  "session": {
+  },
+  "auth": {
+  },
+  "auth:after": {
+    "./middleware/dcl_post_auth": {
+      "enabled": true
+    }
+  },
+  "parse": {
+  },
+  "routes": {
+    "loopback#rest": {
+      "paths": ["${restApiRoot}"]
+    }
+  },
+  "files": {
+  },
+  "final": {
+    "loopback#urlNotFound": {}
+  },
+  "final:after": {
+    "strong-error-handler": {
+      "params": {
+        "debug": true,
+        "log": true
+      }
+    }
+  }
+}

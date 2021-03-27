@@ -1,0 +1,118 @@
+{
+  "name": "Match",
+  "strict": true,
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "doc": "Unique Match Id"
+    },
+    "date": {
+      "type": "Date",
+      "doc": "Date of the Match"
+    },
+    "status": {
+      "type": "string",
+      "doc": "Won/Tie/Abandoned"
+    },
+    "result": {
+      "type": "string",
+       "doc": "E.g: Won by 2 wickets/Abandoned due to rain"
+    },
+    "tossChoice": {
+        "type": "string",
+        "doc": "Choose to field/bat"
+    },
+    "momDesc": {
+      "type": "string",
+      "doc": "100 runs, 2 catches and 1 wicket"
+    },
+    "lock": {
+      "type": "Boolean",
+      "default": false,
+      "doc": "True if Match Score Sheet is Not Editable, False to make it editable"
+    },
+    "scoreSheetStatus": {
+      "type": "string",
+      "default": "none",
+      "doc": "One of the possible states: none/saved/submit"
+    }
+  },
+  "relations": {
+    "umpireOne": {
+      "model": "Team",
+      "type": "belongsTo",
+      "foreignKey": "umpireOneId"
+    },
+    "umpireTwo": {
+      "model": "Team",
+      "type": "belongsTo",
+      "foreignKey": "umpireTwoId"
+    },
+    "teamOne": {
+      "model": "Team",
+      "type": "belongsTo",
+      "foreignKey": "teamOneId"
+    },
+    "teamTwo": {
+      "model": "Team",
+      "type": "belongsTo",
+      "foreignKey": "teamTwoId"
+    },
+    "inningOne": {
+      "model": "Inning",
+      "type": "belongsTo",
+      "foreignKey": "inningOneId"
+    },
+    "inningTwo": {
+      "model": "Inning",
+      "type": "belongsTo",
+      "foreignKey": "inningTwoId"
+    },
+    "inningThree": {
+      "model": "Inning",
+      "type": "belongsTo",
+      "foreignKey": "inningThreeId"
+    },
+    "inningFour": {
+      "model": "Inning",
+      "type": "belongsTo",
+      "foreignKey": "inningFourId"
+    },
+    "winner": {
+      "model": "Team",
+      "type": "belongsTo",
+      "foreignKey": "winTeamId"
+    },
+    "tossWinner": {
+      "model": "Team",
+      "type": "belongsTo",
+      "foreignKey": "tossWinnerId"
+    },
+    "mom": {
+      "model": "Player",
+      "type": "belongsTo",
+      "foreignKey": "momId"
+    },
+    "matchType": {
+      "model": "MatchType",
+      "type": "belongsTo",
+      "foreignKey": "matchTypeId"
+    },
+    "tournament": {
+      "model": "Tournament",
+      "type": "belongsTo",
+      "foreignKey": "tournamentId"
+    },
+    "ground": {
+      "model": "Ground",
+      "type": "belongsTo",
+      "foreignKey": "groundId"
+    }
+  },
+  "options": {
+    "strict": true
+  },
+  "hidden": ["created"]
+}

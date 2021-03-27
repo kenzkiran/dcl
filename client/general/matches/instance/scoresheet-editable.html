@@ -1,0 +1,85 @@
+<div class="row">
+    <form class="form-inline">
+        <div class="form-group" style="margin-left: 20px;" ng-class="{'has-error': !tossWinner}">
+            <label for="winner">Toss Won By: </label>
+            <select class="form-control" id="winner" ng-model="tossWinner"
+                    ng-options="team.name for team in teams track by team.id" ng-required="true"></select>
+        </div>
+        <div class="form-group" style="margin-left: 20px;" ng-class="{'has-error': !tossChoice}">
+            <label for="choice">Elected To:</label>
+            <select class="form-control" id="choice" ng-model="tossChoice"
+                    ng-options="choice for choice in tossChoices" ng-required="true"></select>
+        </div>
+        <div style="float: right;">
+            <p> {{scoreInfoMessage}}</p>
+        </div>
+    </form>
+</div>
+<hr/>
+<div class="row" ng-if="inningsConfigured">
+    <div class="col-md-12">
+        <uib-accordion close-others="false">
+            <!-- Begginning of First Innings -->
+            <div class="row">
+                <div inning="innings[0]" ptf-inning-header></div>
+            </div>
+            <div class="row">
+                <div inning="innings[0]" ptf-inning-batting-editor></div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div inning="innings[0]" extras="innings[0].extras" ptf-inning-extras></div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div inning="innings[0]" add-bowler="addBowler(1)" ptf-inning-bowling-editor></div>
+            </div>
+            <hr/>
+            <!-- Begginning of Second Innings -->
+            <div class="row">
+                <div inning="innings[1]" ptf-inning-header></div>
+            </div>
+            <div class="row">
+                <div inning="innings[1]" ptf-inning-></div>
+            </div>
+            <div class="row">
+                <div inning="innings[1]" ptf-inning-batting-editor></div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div inning="innings[1]" extras="innings[1].extras" ptf-inning-extras></div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div inning="innings[1]" add-bowler="addBowler(2)" ptf-inning-bowling-editor></div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div match="matchScore" ptf-match-status></div>
+            </div>
+            <hr/>
+
+            <div class="row text-center">
+                <button class="btn btn-primary" ng-show="showVerify" ng-click="verify()"><strong> Verify Scoresheet </strong></button>
+                <button class="btn btn-success" ng-show="!showVerify" ng-click="submit()"><strong> Submit Scoresheet </strong></button>
+                <button  ng-show="showSaveButton" class="btn btn-primary" ng-click="saveDraft()"><strong>Save</strong></button>
+            </div>
+            <div class="row">
+                <div style="color: red;" ng-if="issues.length">
+                    Issues:
+                    <ul>
+                        <li ng-repeat="issue in issues">{{issue.toMessage()}}</li>
+                    </ul>
+                </div>
+                <div ng-if="!issues.length && showVerify">
+                    Please verify scoresheet !!!
+                </div>
+            </div>
+            <hr/>
+    </div>
+    <div class="row" ng-if="!inningsConfigured">
+        <div class="col-md-12">
+            <div id="info-banner"> Enter toss details to continue</div>
+        </div>
+    </div>
+</div>

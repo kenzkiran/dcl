@@ -1,0 +1,92 @@
+{
+    "name": "BowlingScore",
+    "strict": true,
+    "properties": {
+        "id": {
+            "type": "number",
+            "id": true,
+            "generated": true,
+            "doc": "Unique Player Id"
+        },
+        "sequence": {
+            "type": "number",
+            "default": 0,
+            "doc": "Sequence of the bowler"
+        },
+        "overs": {
+            "type": "number",
+            "default": 0,
+            "doc": "Complete Overs bowled"
+        },
+        "balls": {
+            "type": "number",
+            "default": 0,
+            "doc": "Balls bowled of a partial over"
+        },
+        "runs": {
+            "type": "number",
+            "default": 0,
+            "doc": "Runs scored against"
+        },
+        "maidens": {
+            "type": "number",
+            "default": 0,
+            "doc": "Maidens bowled"
+        },
+        "wickets": {
+            "type": "number",
+            "default": 0,
+            "doc": "Total wickets for the bowler"
+        },
+        "dots" : {
+            "type": "number",
+            "default": 0,
+            "doc": "Number of dot balls bowled"
+        },
+        "wides": {
+            "type": "number",
+            "default": 0,
+            "doc": "Wides bowled"
+        },
+        "noballs": {
+            "type": "number",
+            "default": 0,
+            "doc": "Noballs bowled"
+        },
+        "four": {
+            "type": "number",
+            "default": 0,
+            "doc": "The number of 4s conceded by bowler"
+        },
+        "six": {
+            "type": "number",
+            "default": 0,
+            "doc": "The number of 6s conceded by bowler"
+        },
+        "economy": {
+            "type": "number",
+            "default": 0,
+            "doc": "DERIVED: Economy rate of the bowler"
+        }
+    },
+    "relations": {
+        "inning": {
+            "model": "Inning",
+            "type": "belongsTo",
+            "foreignKey": "inningId"
+        },
+        "bowler": {
+            "model": "Player",
+            "type": "belongsTo",
+            "foreignKey": "bowlerId"
+        },
+        "tournament": {
+            "model": "Tournament",
+            "type": "belongsTo",
+            "foreignKey": "tournamentId"
+        }
+    },
+    "options": {
+        "strict": true
+    }
+}

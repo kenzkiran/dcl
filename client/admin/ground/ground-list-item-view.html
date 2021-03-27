@@ -1,0 +1,14 @@
+<div class="col-md-10 dcl-list-item">
+  <div class="col-md-8 col-sm-6">
+    <div class="ground-name">
+        <span>{{ground.name}}:</span>&nbsp;<span class="info-bold">{{getDisplayAddress({ground: ground})}}</span>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-5 text-center">
+    <span class="glyphicon glyphicon-pencil item-tools" style="cursor:pointer;" uib-tooltip="Edit" ng-click="edit({grndToEdit: ground});"> </span>
+    <span class="glyphicon glyphicon-map-marker item-tools" style="cursor:pointer;" uib-tooltip="View Map" ng-click="viewMap({grndToView: ground});"></span>
+  </div>
+  <div class="col-sm-1 text-center ground-status">
+    <span id='gstatus' class="status-hoverable" uib-tooltip="Change Status" ng-click="toggleActive({groundToToggleStatus: ground});"></span>
+  </div>
+</div>

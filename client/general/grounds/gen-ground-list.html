@@ -1,0 +1,40 @@
+<div>
+    <div class="row">
+        <div id="divGenGroundsHdrBar" class="col-xs-12 text-center dcl-title-box ground">Grounds</div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            Partial Name or Address:&nbsp;&nbsp;<input type="text" ng-model="searchText" style="width:250px;" class="input-sm" />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-primary" style="width:100px;" ng-click="searchGrounds()">Search</button>
+        </div>
+    </div>    
+    <br/>
+    <div class="row">
+        <div class="col-xs-12 col-sm-5 col-md-4 text-left">
+            <div class="row dcl-list-item ng-class:{'ground-selected': (currentGround != null && currentGround.id == g.id)};"  ng-repeat="g in grounds">
+                <div class="col-xs-9 visible-xs" style="cursor:pointer;" ng-click="openGoogleMapsInNewWindow(g.url);">
+                    <div class="ground-name">{{g.name}}</div>
+                    <div class="ground-info">{{getDisplayAddress(g)}}</div>
+                </div>
+                <div class="hidden-xs col-sm-10" style="cursor:pointer;" ng-click="setCurrentGround(g); gotoMapSection();">
+                    <div class="ground-name">{{g.name}}</div>
+                    <div class="ground-info">{{getDisplayAddress(g)}}</div>
+                </div>
+                <div class="col-xs-3 visible-xs">
+                    <span class="glyphicon glyphicon-map-marker item-tools" style="cursor:pointer;" uib-tooltip="View Map" ng-click="openGoogleMapsInNewWindow(g.url);"> </span>
+                </div>
+                <div class="hidden-xs col-sm-2">
+                    <span class="glyphicon glyphicon-map-marker item-tools" style="cursor:pointer;" uib-tooltip="View Map" ng-click="setCurrentGround(g); gotoMapSection();"> </span>
+                </div>
+            </div>
+        </div>
+        <div class="hidden-xs col-sm-7 col-md-8 dcl-static-box">
+            <div><span class="info-bold">Ground:&nbsp;</span>{{currentGround.name}}</div>
+            <div><span class="info-bold">Address:&nbsp;</span>{{getDisplayAddress(currentGround)}}</div>
+            <br/>
+            <iframe id="mapFrame" ng-src="{{currentGround ? currentGround.url : ''}}" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>

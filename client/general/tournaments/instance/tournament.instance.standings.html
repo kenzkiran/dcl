@@ -1,0 +1,116 @@
+<div class="team-standings">
+<div class="row"><h3> Standings </h3></div>
+<div class="row">
+<table class="table table-condensed table-striped">
+    <tr style="border: 1px solid darkgray;">
+        <th width="5%" class="text-center">Ranking</th>
+        <th class="col-md-1 col-sm-1  text-center">Team Name</th>
+        <th class="col-md-1 col-sm-1  text-center">Played</th>
+        <th width="5%" class="text-center">Won</th>
+        <th width="5%" class="text-center">Lost</th>
+        <th width="5%" class="text-center">Tie</th>
+        <th class="col-md-1 col-sm-1  text-center">For Runs</th>
+        <th class="col-md-1 col-sm-1  text-center">For Overs</th>
+        <th class="col-md-1 col-sm-1  text-center">For RR</th>
+        <th class="col-md-1 col-sm-1  text-center">Opp Runs</th>
+        <th class="col-md-1 col-sm-1  text-center">Opp Overs</th>
+        <th class="col-md-1 col-sm-1  text-center">Opp RR</th>
+        <th class="col-md-1 col-sm-1  text-center">Net RR</th>
+        <th class="col-md-1 col-sm-1  text-center">Points</th>
+    </tr>
+    <tr ng-repeat="team in sortedTeams" class="text-center" >
+        <td>{{$index + 1}}</td>
+        <td class="text-left team-name" ng-click="showTeamStats(team)"><span uib-tooltip="Show Stats"> {{team.teamName}}</span></td>
+        <td>{{team.numPlayed}}</td>
+        <td>{{team.wins}}</td>
+        <td>{{team.loss}}</td>
+        <td>{{team.ties}}</td>
+        <td>{{team.forRuns}}</td>
+        <td>{{team.forOvers}}</td>
+        <td>{{team.forRR}}</td>
+        <td>{{team.againstRuns}}</td>
+        <td>{{team.againstOvers}}</td>
+        <td>{{team.againstRR}}</td>
+        <td>{{team.netRR}}</td>
+        <td>{{team.points}}</td>
+    </tr>
+</table>
+</div>
+<div ng-if="notPlayedTeams.length">
+    <div class="row"><h4> Not Played Teams </h4></div>
+    <div ng-repeat="np in notPlayedTeams">{{np.teamName}}</div>
+</div>
+<div ng-if="teamSelectedForStat">
+    <hr/>
+    <div id="teamStat" class="row"><h3> Team Stats: {{teamSelectedForStat.teamName}}</h3> </div>
+    <div class="row"> <h4> Batting Stats </h4></div>
+    <div class="row">
+        <table class="table table-condensed table-striped">
+            <tr style="border: 1px solid darkgray;">
+                <th class="col-md-1 col-sm-1 text-center">#</th>
+                <th class="col-md-2 col-sm-2 text-center">Player Name</th>
+                <th style="width:5%;" class="text-center">Matches</th>
+                <th style="width:5%;" class="text-center">Inn</th>
+                <th style="width:5%;" class="text-center">NO</th>
+                <th class="col-md-1 col-sm-1 text-center">Runs</th>
+                <th style="width:5%;" class="text-center">Highest</th>
+                <th class="col-md-1 col-sm-1 text-center">Average</th>
+                <th class="col-md-1 col-sm-1 text-center">SR%</th>
+                <th style="width:5%;" class="text-center">100</th>
+                <th style="width:5%;" class="text-center">50</th>
+                <th style="width:5%;" class="text-center">6s</th>
+                <th style="width:5%;" class="text-center">4s</th>
+                <th class="col-md-1 col-sm-1 text-center">Fielding (C/R/St)</th>
+                <th class="col-md-1 col-sm-1 text-center">Best (C/R/St)</th>
+            </tr>
+            <tr ng-repeat="p in teamSelectedForStat.battingStats" class="text-center">
+                <td>{{$index + 1}}</td>
+                <td class="text-left">{{p.firstName + " " + p.lastName}}</td>
+                <td>{{p.stats.batting.totalMatches}}</td>
+                <td>{{p.stats.batting.totalInnings}}</td>
+                <td>{{p.stats.batting.totalNotOuts}}</td>
+                <td>{{p.stats.batting.totalRuns}}</td>
+                <td>{{p.stats.batting.topScore.runs}}</td>
+                <td>{{p.stats.batting.average}}</td>
+                <td>{{p.stats.batting.strikeRate}}</td>
+                <td>{{p.stats.batting.totalHundreds}}</td>
+                <td>{{p.stats.batting.totalFifties}}</td>
+                <td>{{p.stats.batting.totalSixes}}</td>
+                <td>{{p.stats.batting.totalFours}}</td>
+                <td>{{formatFieldingStat(p.stats.fielding)}}</td>
+                <td>{{formatBestFielding(p.stats.fielding.best)}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="row"><h4> Bowling Stats</h4></div>
+    <div class="row">
+        <table class="table table-condensed table-striped">
+            <tr style="border: 1px solid darkgray;">
+                <th class="col-md-1 col-sm-1 text-center">#</th>
+                <th class="col-md-2 col-sm-2 text-center">Player Name</th>
+                <th class="col-md-1 col-sm-1 text-center">Matches</th>
+                <th class="col-md-1 col-sm-1 text-center">Balls</th>
+                <th class="col-md-1 col-sm-1 text-center">Wickets</th>
+                <th class="col-md-1 col-sm-1 text-center">Runs</th>
+                <th class="col-md-1 col-sm-1 text-center">E.Rate</th>
+                <th class="col-md-1 col-sm-1 text-center">Avg</th>
+                <th class="col-md-1 col-sm-1 text-center">Best</th>
+                <th class="col-md-1 col-sm-1 text-center">5W</th>
+            </tr>
+            <tr ng-repeat="p in teamSelectedForStat.bowlingStats" class="text-center">
+                <td>{{$index + 1}}</td>
+                <td class="text-left">{{p.firstName + " " + p.lastName}}</td>
+                <td>{{p.stats.totalMatches}}</td>
+                <td>{{p.stats.bowling.totalBalls}}</td>
+                <td>{{p.stats.bowling.totalWickets}}</td>
+                <td>{{p.stats.bowling.totalRuns}}</td>
+                <td>{{p.stats.bowling.economyRate}}</td>
+                <td>{{p.stats.bowling.average}}</td>
+                <td>{{p.stats.bowling.best}}</td>
+                <td>{{p.stats.bowling.total5wickets}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+

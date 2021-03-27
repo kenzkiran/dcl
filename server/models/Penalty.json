@@ -1,0 +1,34 @@
+{
+  "name": "Penalty",
+  "strict": true,
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "doc": "Unique Penalty Id"
+    },
+    "isbonus": {
+      "type": "boolean",
+      "default": false,
+      "doc": "Is it a Bonus Point"
+    },
+    "reason": {
+      "type": "string",
+      "required": true,
+      "doc": "Reason for Penalty/Bonus"
+    },
+    "points": {
+      "type": "number",
+      "default": 2,
+      "doc": "Points to be deducted/added (in case of bonus)"
+    }
+  },
+  "relations": {
+    "roaster": {
+      "type": "belongsTo",
+      "model": "Roaster",
+      "foreignKey": "roasterId"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<div class="modal-header">
+    <div class="modal-title">
+        <span id="lock" style="postion: absolute; top: 5px; right: 26px; font-size: 26px; float: right;"
+              class="glyphicon glyphicon-lock" ng-class="{red: match.lock, green: !match.lock}"
+              ng-click="toggleLock()"> </span>
+        <h3> {{task}} Matches </h3>
+    </div>
+
+</div>
+<div class="modal-body">
+    <form>
+        <div class="form-group">
+            <label for="date">Date</label>
+            <div class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="match.date"
+                       ng-required="true" is-open="status.opened"/>
+                <span class="input-group-btn"> <button type="button"
+                                                       class="btn btn-default glyphicon glyphicon-calendar"
+                                                       ng-click="open($event)"></button> </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="teamOne">Team 1</label>
+            <select class="form-control" id="teamOne" ng-model="match.teamOne"
+                    ng-options="team.name for team in teams track by team.id"></select>
+        </div>
+        <div class="form-group">
+            <label for="teamTwo">Team 2</label>
+            <select class="form-control" id="teamTwo" ng-model="match.teamTwo"
+                    ng-options="team.name for team in teams track by team.id"></select>
+        </div>
+        <div class="form-group">
+            <label for="umpireOne">Umpire 1</label>
+            <select class="form-control" id="umpireOne" ng-model="match.umpireOne"
+                    ng-options="uTeam.name for uTeam in umpiringTeams track by uTeam.id"></select>
+        </div>
+        <div class="form-group">
+            <label for="umpireTwo">Umpire 2</label>
+            <select class="form-control" id="umpireTwo" ng-model="match.umpireTwo"
+                    ng-options="uTeam.name for uTeam in umpiringTeams track by uTeam.id"></select>
+        </div>
+        <div class="form-group">
+            <label for="ground">Ground</label>
+            <select class="form-control" id="ground" ng-model="match.ground"
+                    ng-options="ground.name for ground in grounds track by ground.id"></select>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="add()">{{task}}</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

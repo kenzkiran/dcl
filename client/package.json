@@ -1,0 +1,32 @@
+{
+  "name": "DCL_Client",
+  "version": "1.0.0",
+  "description": "This is the place for your application front-end files.",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ravikiran Ramachandra",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^16.2.3",
+    "browserify-shim": "^3.8.10",
+    "grunt": "^1.0.3",
+    "grunt-bower": "^0.21.0",
+    "grunt-browserify": "^5.3.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^2.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-jscs": "^3.0.1",
+    "jshint-stylish": "^2.1.0",
+    "load-grunt-tasks": "^4.0.0",
+    "matchdep": "^1.0.0",
+    "stringify": "^5.2.0",
+    "time-grunt": "^1.2.2"
+  },
+  "dependencies": {
+    "jshint-stylish": "^2.1.0"
+  }
+}

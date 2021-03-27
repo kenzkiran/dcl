@@ -1,0 +1,26 @@
+<div class="row">
+    <table class="table table-condensed table-striped">
+        <tr>
+            <th class="col-md-2 text-left">Name</th>
+            <th class="col-md-2 text-center">Active</th>
+            <th class="col-md-2 text-center">Certified</th>
+            <th class="col-md-2 text-center">Certification Level</th>
+            <th class="col-md-2 text-center">Approved</th>
+            <th class="col-md-2 text-center">Email Verified</th>
+            <th class="col-md-2 text-center">Edit</th>
+        </tr>
+        <tr ng-repeat="player in filteredPlayers">
+            <td class="col-md-2 text-left">
+                <a ui-sref="players.instance({id: player.id})" class="player-name">{{player.firstName}}&nbsp;&nbsp;{{player.lastName}}</a>
+            </td>
+            <td class="col-md-2 text-center">{{(player.active ? "Yes" : "No")}}</td>
+            <td class="col-md-2 text-center">{{(player.certified ? "Yes" : "No")}}</td>
+            <td class="col-md-2 text-center">{{(player.certLevel)}}</td>
+            <td class="col-md-2 text-center">{{(player.approved ? "Yes" : "No")}}</td>
+            <td class="col-md-2 text-center">{{(player.owner.emailVerified ? "Yes" : "No")}}</td>
+            <td class="col-md-2 text-center">
+                  <span class="glyphicon glyphicon-pencil item-tools" uib-tooltip="Edit" ng-click="edit(player);"> </span>
+            </td>
+        </tr>
+    </table>
+</div>

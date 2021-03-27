@@ -1,0 +1,119 @@
+<div ng-if="status === 'init'">
+    <h3>Getting Player Info...</h3>
+</div>
+<div ng-if="status === 'error'">
+    <div class="dcl-error-msg">
+        <p class="header" >Oops Player Not Found!</p>
+    </div>
+</div>
+<div ng-if="status === 'success'">
+<div class="row">
+    <div class="col-md-10 player-profile-name">
+        {{player.firstName}}   {{player.lastName}}
+        <hr/>
+    </div>
+    <div class="col-md-2" ng-show="showEdit">
+        <a ui-sref="players.editprofile({id: player.id})" ><h1 class="label label-primary">Profile Settings</h1></a>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-2 text-left player-info-header">Designation:</div>
+            <div class="col-md-6 text-left player-info-details">{{player.designation}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 text-left player-info-header">Batting Style:</div>
+            <div class="col-md-6 text-left player-info-details">{{player.battingStyle}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 text-left player-info-header">Bowling Style:</div>
+            <div class="col-md-6 text-left player-info-details">{{player.bowlingStyle}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 text-left player-info-header">Wicket Keeper?:</div>
+            <div class="col-md-6 text-left player-info-details">{{player.isWicketKeeper ? 'Yes' : 'No'}}</div>
+        </div>
+    </div>    
+    <div class="col-md-2 thumbnail">    
+        <img style="height: 150px; width: auto;" src="http://localhost:3000/logos/player_placeholder.png">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" style="font-size: 18px; font-weight: bolder; color: black;">Batting Statistics</div>
+</div>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <table class="table table-condensed table-striped stats">
+            <tr>
+                <th style="width:100px;">Type</th>
+                <th style="width:100px;">Matches</th>
+                <th style="width:100px;">Innings</th>
+                <th>NotOut</th>
+                <th>Runs</th>
+                <th>Highest</th>
+                <th>Average</th>
+                <th>SRate</th>
+                <th>100s</th>
+                <th>50s</th>
+                <th>6s</th>
+                <th>4s</th>
+            </tr>
+            <tr ng-repeat="s in stats">
+                <td>{{s.type}}</td>
+                <td>{{s.batting.totalMatches}}</td>
+                <td>{{s.batting.totalInnings}}</td>
+                <td>{{s.batting.totalNotOuts}}</td>
+                <td>{{s.batting.totalRuns}}</td>
+                <td>{{s.batting.topScore.runs}}</td>
+                <td>{{s.batting.average}}</td>
+                <td>{{s.batting.strikeRate}}</td>
+                <td>{{s.batting.totalHundreds}}</td>
+                <td>{{s.batting.totalFifties}}</td>
+                <td>{{s.batting.totalSixes}}</td>
+                <td>{{s.batting.totalFours}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br/>
+<br/>
+<hr/>
+<div class="row">
+    <div class="col-md-12" style="font-size: 18px; font-weight: bolder; color: black;">Bowling Statistics</div>
+</div>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <table class="table table-condensed table-striped stats">
+            <tr>
+                <th style="width:100px;">Type</th>
+                <th style="width:100px;">Matches</th>
+                <th>Balls</th>
+                <th>Runs</th>
+                <th>Wickets</th>
+                <th>Best</th>
+                <th>Average</th>
+                <th>Economy</th>
+            </tr>
+            <tr ng-repeat="s in stats">
+                <td>{{s.type}}</td>
+                <td>{{s.batting.totalMatches}}</td>
+                <td>{{s.bowling.totalBalls}}</td>
+                <td>{{s.bowling.totalRuns}}</td>
+                <td>{{s.bowling.totalWickets}}</td>
+                <td>{{s.bowling.best}}</td>
+                <td>{{s.bowling.average}}</td>
+                <td>{{s.bowling.economyRate}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br />
+<br/>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <button class="btn btn-primary" style="width:100px;" ng-click="goToPlayerList()">Player List</button>
+    </div>
+</div>
+</div>

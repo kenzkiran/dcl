@@ -1,0 +1,20 @@
+{
+  "MinRequiredPlayers": 8,
+  "PlayersPageSize": 20,
+  "WinPoints": 4,
+  "TiePoints": 2,
+  "GameTypes": ["Tape", "Leather", "T30"],
+  "AgeGroups": ["Professional", "Under 12", "Under 14", "Under 16", "Under 19"],
+  "Gender": {"male": "Male", "female": "Female"},
+  "BattingStyles": ["Right Handed", "Left Handed"],
+  "BowlingStyles": ["Right Arm Fast-Medium", "Right Arm Medium-Fast", "Right Arm Fast", "Right Arm Offspin", "Right Arm Legspin",
+    "Left Arm Fast-Medium", "Left Arm Medium-Fast", "Left Arm Fast", "Left Arm Orthodox", "Left Arm Unorthodox/Chinaman"],
+  "TossChoices": ["Bat", "Field"],
+  "BatsmanStatus": ["DNB", "caught", "bowled", "stumped", "runout", "hitwk", "lbw", "retired hurt", "retired out", "handled ball", "obstruct field", "timed out", "double hit", "NotOut"],
+  "MatchStatus": ["Won", "Tie", "Abandoned"],
+  "UmpireCertificationLevels": [1, 2],
+  "TeamRoles":{"captain": "Captain", "viceCaptain": "ViceCaptain", "admin": "Admin", "player": "Player"},
+  "MatchTypes": ["T-20", "ODI", "CustomLimitedOvers"],
+  "ScoresheetStatus": {"none": "none", "saved": "saved", "submit": "submit"},
+  "AdminTasks": { "newteam": "TaskNewTeam"}
+}

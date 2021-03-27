@@ -1,0 +1,41 @@
+<td>
+    <output style="margin:0px 5px;"> {{index + 1}}</output>
+</td>
+<td class="col-md-2 col-sm-2 score-col">
+     <select type="text" class="form-control" ng-model="battingScore.batsman"
+            ng-options="player.name for player in battingOptions(index) track by player.id"> </select>
+</td>
+<td class="col-md-1 col-sm-1 score-col"
+    ng-class="{'has-error': battingScore.status === 'DNB' && (battingScore.four || battingScore.six || battingScore.runs)}">
+    <select type="text" class="form-control" ng-model="battingScore.status"
+            ng-change="battingScore.fielder={'name': ''}; battingScore.bowler={'name': ''};"
+            ng-options="status for status in inning.batsmanStatus" ng-disabled="!battingScore.batsman.id"></select>
+</td>
+<td class="col-md-2 col-sm-2 score-col"
+    ng-class="{'has-error': fielderEnabled && (!battingScore.fielder || !battingScore.fielder.id)}">
+    <select type="text" class="form-control" ng-model="battingScore.fielder"
+            ng-options="player.name for player in inning.bowlingTeam.players track by player.id"
+            ng-disabled="!fielderEnabled" ng-disabled="!battingScore.batsman.id"> </select>
+</td>
+<td class="col-md-2 col-sm-2 score-col"
+    ng-class="{'has-error': bowlerEnabled && (!battingScore.bowler || !battingScore.bowler.id)}">
+    <select type="text" class="form-control" ng-model="battingScore.bowler"
+            ng-options="player.name for player in inning.bowlingTeam.players track by player.id"
+            ng-disabled="!bowlerEnabled"> </select>
+</td>
+<td class="col-md-1 col-sm-1 score-col"
+    ng-class="{'has-error': battingScore.runs < battingScore.four * 4 + battingScore.six * 6}">
+    <input type="number" class="form-control" ng-model="battingScore.runs" min="0" ng-disabled="!battingScore.batsman.id"> </input>
+</td>
+<td class="col-md-1 col-sm-1 score-col" ng-class="{'has-error': battingScore.runs > 0 && battingScore.balls === 0}">
+    <input type="number" class="form-control" ng-model="battingScore.balls" min="0" ng-disabled="!battingScore.batsman.id"> </input>
+</td>
+<td class="col-md-1 col-sm-1 score-col">
+    <input type="number" class="form-control" ng-model="battingScore.four" min="0" ng-disabled="!battingScore.batsman.id"> </input>
+</td>
+<td class="col-md-1 col-sm-1 score-col">
+    <input type="number" class="form-control" ng-model="battingScore.six" min="0" ng-disabled="!battingScore.batsman.id"> </input>
+</td>
+<td class="col-md-1 col-sm-1 score-col">
+    <output type="text" style="font-size: 14px;" class="form-control"> {{battingScore.runs/battingScore.balls * 100 | number:1}} %</output>
+</td>

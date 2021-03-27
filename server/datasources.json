@@ -1,0 +1,30 @@
+{
+    "db": {
+        "name": "db",
+        "connector": "mongodb",
+        "host": "localhost",
+        "port": 27017,
+        "database": "dcl",
+        "debug" : true
+    },
+    "db-mem": {
+        "name": "db-mem",
+        "connector": "memory"
+    },
+    "emailDs": {
+        "name": "emailDs",
+        "connector": "mail",
+        "transports": [
+          {
+            "type": "smtp",
+            "host": "smtp.mail.yahoo.com",
+            "secure": true,
+            "port": 465,
+            "auth": {
+              "user": "dclweb@yahoo.com",
+              "pass": "siznvzofjbektcty"
+            }
+          }
+        ]
+      }
+}

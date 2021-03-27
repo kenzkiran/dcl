@@ -1,0 +1,156 @@
+<div class="row">
+  <div class="col-md-3">
+    <div><img style="height: 200px; width: auto;" ng-src="{{team.logo}}" alt="Team Logo" /></div>
+  </div>
+  <div class="col-md-8">
+    <div class="row" style="margin-top: 30px;">
+      <div class="team-name-title"> {{team.name}}</div>
+      <div class="info-bold" style="font-size: 20px; font-weight: bolder;">{{team.location}}</div>
+      <div class="info-bold" ng-if="team.active" style="margin-top: 5px;"><span class="team-active">Active </span></div>
+      <div class="info-bold" ng-if="!team.active" style="margin-top: 5px;"><span class="team-inactive"> Not
+          Active</span></div>
+    </div>
+    <div class="row" ng-if="is_team_admin">
+      <div class="col-md-12 tool-container">
+        <div class="tool-info">
+          <span class="glyphicon glyphicon-plus-sign lefty" uib-tooltip="Add Player" aria-hidden="true"
+            ng-click="addPlayer()"></span>
+          <button class="btn btn-primary letterBtn lefty" uib-tooltip="Set Captain" aria-hidden="true"
+            ng-click="setRole('Captain')">
+            <i class="glyphicon glyphicon-user"></i> C
+          </button>
+          <button class="btn btn-primary letterBtn lefty" uib-tooltip="Set Vice Captain" aria-hidden="true"
+            ng-click="setRole('Vice')">
+            <i class="glyphicon glyphicon-user"></i> V
+          </button>
+          <button class="btn btn-primary letterBtn lefty" uib-tooltip="Set Admin" aria-hidden="true"
+            ng-click="setRole('Admin')">
+            <i class="glyphicon glyphicon-user"></i> A</button>
+          <span class="glyphicon glyphicon-th-large pull-right righty" ng-class="{'selected': gridView}"
+            uib-tooltip="Grid View" aria-hidden="true" ng-click="gridView = true;"></span>
+          <span class="glyphicon glyphicon-list pull-right righty" ng-class="{'selected': !gridView}"
+            uib-tooltip="List View" aria-hidden="true" ng-click="gridView = false;"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</br>
+<!-- if team has players -->
+<div ng-if="players.length">
+  <div ng-if="gridView">
+    <div class="row">
+      <div ng-repeat="p in players">
+        <div player="p" on-edit="addPlayer(player)" is-captain="isCaptain(p.id)" is-admin="isAdmin(p.id)"
+          is-vice="isVice(p.id)" ptf-team-player></div>
+      </div>
+    </div>
+    <div class="row" ng-if="iaplayers.length">
+      <h2> Inactive Players </h2>
+      <hr>
+      <div ng-repeat="p in iaplayers">
+        <div player="p" on-edit="addPlayer(player)" ptf-team-player></div>
+      </div>
+    </div>
+  </div>
+  <div ng-if="!gridView">
+    <div class="row">
+      <table class="table table-condensed table-striped">
+        <tr>
+          <th class="text-center" style="width: 3% !important;">#</th>
+          <th class="col-md-1 col-sm-2 text-left">Name</th>
+          <th class="col-md-1 col-sm-2 text-center">Batting</th>
+          <th class="col-md-1 col-sm-2 text-center">Bowling</th>
+          <th class="col-md-1 col-sm-2 text-center">Certification</th>
+          <th class="col-md-1 col-sm-2 text-center">Status</th>
+          <th ng-if="is_team_admin" class="col-md-1 col-sm-2 text-center">Actions</th>
+        </tr>
+        <tr ng-repeat="p in players">
+          <td class="text-center"> {{$index + 1}} </td>
+          <td class="text-left" style="font-weight: bold;">
+            <a ui-sref="players.instance({id: p.id})">
+              <ptf-team-player-name first-name="p.firstName" last-name="p.lastName" is-captain="isCaptain(p.id)"
+                is-admin="isAdmin(p.id)" is-vice="isVice(p.id)">
+              </ptf-team-player-name>
+            </a>
+          </td>
+          <td class="text-center"> {{p.battingStyle}}</td>
+          <td class="text-center"> {{p.bowlingStyle}}</td>
+          <td class="text-center" ng-if="p.certified"> Level - {{p.certLevel}} </td>
+          <td class="text-center" ng-if="!p.certified"> Not Certified </td>
+          <td class="text-center"> Active </td>
+          <td ng-if="is_team_admin" class="text-center"> <span uib-tooltip="Remove Player from Team" style="color:red"
+              class="glyphicon glyphicon-remove" ng-click="removePlayer(p)"></span></td>
+        </tr>
+        <tr ng-repeat="p in iaplayers">
+          <td class="text-center"> {{players.length + $index + 1}} </td>
+          <td class="text-left"><a ui-sref="players.instance({id: p.id})"> {{p.firstName}} {{p.lastName}} </a></td>
+          <td class="text-center"> {{p.battingStyle}}</td>
+          <td class="text-center"> {{p.bowlingStyle}}</td>
+          <td class="text-center" ng-if="p.certified"> Level - {{p.certLevel}} </td>
+          <td class="text-center" ng-if="!p.certified"> Not Certified </td>
+          <td class="text-center"> Inactive </td>
+          <td ng-if="is_team_admin" class="text-center"> <span uib-tooltip="Remove Player from Team" style="color:red"
+              class="glyphicon glyphicon-remove" ng-click="removePlayer(p)"></span> </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row" ng-if="formGuide.length > 0">
+    <h3>Form Guide: </h3>
+    <div ng-repeat="fg in formGuide" style="float: left" ng-class="fg.class" uib-tooltip="{{fg.details}}"
+      tooltip-placement="bottom">{{fg.result}}</div>
+  </div>
+  <div ng-if="matches.length > 0">
+    <h3> Recent Matches here : </h3>
+    <div class="row">
+      <div style="font-weight:bolder">
+        <div class="col-md-2"> Date </div>
+        <div class="col-md-3"> Teams </div>
+        <div class="col-md-3"> Umpires </div>
+        <div class="col-md-2"> Ground </div>
+        <div class="col-md-2"> Scoresheet </div>
+      </div>
+    </div>
+    <div class="row" ng-repeat="m in matches">
+      <div>
+        <div class="col-md-2"> {{m.date | date: 'dd-MMMM-yyyy'}}</div>
+        <div class="col-md-3"> <a ui-sref="matches.iview({id: m.id})">
+            <span ng-class="{'highlight-label': m.teamOne.name == team.name, 'team-name':true}">{{m.teamOne.name}}</span> vs
+            <span ng-class="{'highlight-label': m.teamTwo.name == team.name, 'team-name':true}">{{m.teamTwo.name}}</span> </a>
+        </div>
+        <div class="col-md-3 team-name"> {{m.umpireOne.name}} & {{m.umpireTwo.name}}</span> </div>
+        <div class="col-md-2"> <a ui-sref="grounds.list({id: m.ground.id})">{{m.ground.name}}</a> </div>
+        <div class="col-md-2" uib-tooltip="ScoreSheet Status" tooltip-placement="left"> {{m.scoreSheetStatus}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" ng-if="umpiring.length > 0">
+    <h3> Umpiring Assignments : </h3>
+    <div style="font-weight:bolder">
+      <div class="col-md-2"> Date </div>
+      <div class="col-md-3"> Teams </div>
+      <div class="col-md-3"> Umpires </div>
+      <div class="col-md-4"> Ground </div>
+    </div>
+    <div ng-repeat="m in umpiring">
+      <div class="col-md-2"> {{m.date | date: 'dd-MMMM-yyyy'}}</div>
+      <div class="col-md-3 team-name">{{m.teamOne.name}} vs {{m.teamTwo.name}} </div>
+      <div class="col-md-3">
+        <span ng-class="{'highlight-label': m.umpireOne.name == team.name, 'team-name':true}">{{m.umpireOne.name}}</span> &
+        <span ng-class="{'highlight-label': m.umpireTwo.name == team.name, 'team-name':true}">{{m.umpireTwo.name}}</span> </div>
+      <div class="col-md-4"> <a ui-sref="grounds.list({id: m.ground.id})"> {{m.ground.name}} </a></div>
+    </div>
+  </div>
+</div>
+<!-- If team doesn't have any players -->
+<div ng-if="!players.length">
+  <div class="dcl-error-msg">
+    <p class="header"> No players added to this team </p>
+    <div> Please Add Players using : <span style="position: relative; top: 5px;font-size: 20px;"
+        class="glyphicon glyphicon-plus-sign">
+      </span> </div>
+  </div>
+</div>

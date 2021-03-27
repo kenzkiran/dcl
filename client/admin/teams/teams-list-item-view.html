@@ -1,0 +1,22 @@
+ <div class="col-md-10 col-sm-8 dcl-list-item">
+        <div class="col-md-4 col-sm-6">
+            <div class="title-big">
+                <a ui-sref="admin.teams.instance({id:team.id})"> <span style="text-transform: capitalize;"> {{team.name}} </span>{{team.namepostfix}} </a>
+            </div>
+            <div class="text-center">
+                <span class="info-bold"> {{team.location}}</span>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="title-big player-name"> {{team.role.captain}}</div>
+            <div class="info-bold text-center player-name"> {{team.role.vice}} (VC), {{team.role.admin}} (Admin) </div>
+        </div>
+        <div class="col-md-2 col-sm-6 team-status">
+            <span id='tstatus' class="status-hoverable" uib-tooltip="Change Status" ng-click="toggleActive({team: team});"></span>
+        </div>
+        <div class="col-md-2 col-sm-6">
+            <div class="text-center">
+                <span class="glyphicon glyphicon-pencil item-tools" uib-tooltip="Edit" ng-click="edit({team: team});"> </span>
+            </div>
+        </div>
+</div>

@@ -1,0 +1,18 @@
+<div>
+    <div class="row">
+        <div class="col-md-10 text-center dcl-title-box ground">Grounds</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 tool-container">
+            <div class="tool-info">
+                <span class="glyphicon glyphicon-plus-sign" style="cursor:pointer;" data-placement="top" title="Add Ground"
+                  ng-click="add()"/>
+            </div>
+        </div>
+    </div>
+    <div ng-repeat="g in grounds | filter:query">
+        <div class="row">
+            <div class="row" ground='g' on-edit="add(grndToEdit)" on-view-map="viewMap(grndToView)" get-display-address="getDisplayAddress(ground)" on-toggle-active="toggleActive(groundToToggleStatus)" ptf-ground-list></div>
+        </div>
+    </div>
+</div>

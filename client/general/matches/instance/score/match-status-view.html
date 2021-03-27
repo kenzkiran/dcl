@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="panel panel-success">
+        <div class="panel-heading">Match Status</div>
+        <div class="panel-body">
+            <form class="form-inline" style="margin:10px;">
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id='status' class="form-control" ng-model="status" ng-options="s for s in match.matchStatus"
+                            style="width: 100px;"></select>
+                </div>
+                <div class="form-group" ng-show="showWinner" ng-class="{'has-error': !winner}"
+                     style="margin-left: 10px;">
+                    <label for="winner">Winner</label>
+                    <select id='winner' class="form-control" ng-model="winner"
+                            ng-options="team.name for team in match.teams track by team.id"></select>
+                </div>
+                <div class="form-group" ng-class="{'has-error': match.status === 'Abandoned' && !match.result}"
+                     style="margin-left: 10px;">
+                    <label for="result">Result</label>
+                    <input id='result' type="text" ng-model="match.result" class="form-control"
+                           placeholder='E.g Match Won By 2 wkts, Abandoneded due to Rain etc!' style="width: 420px;">
+                </div>
+            </form>
+            <form class="form-inline" style="margin:10px;">
+                <div class="form-group">
+                    <label for="mom">Man of Match</label>
+                    <select id='mom' class="form-control" ng-model="mom">
+                        <option value=""><- Team : {{match.teams[0].name}} -></option>
+                        <option value="{{player}}" ng-repeat="player in match.teams[0].players track by player.id">
+                            {{player.name}}
+                        </option>
+                        <option value=""> <- Team : {{match.teams[1].name}} -></option>
+                        <option value="{{player}}" ng-repeat="player in match.teams[1].players track by player.id">
+                            {{player.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group" ng-class="{'has-error': match.status === 'Abandoned' && !match.result}"
+                     style="margin-left: 10px;">
+                    <label for="momdesc">MoM Description</label>
+                    <input id='momdesc' type="text" ng-model="match.momDesc" class="form-control"
+                           placeholder='E.g. Took 5 wickets, Score a century, etc' style="width: 420px;">
+            </form>
+        </div>
+    </div>
+</div>

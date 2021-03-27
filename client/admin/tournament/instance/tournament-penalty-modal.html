@@ -1,0 +1,55 @@
+<div class="modal-header">
+    <div class="modal-title">
+        <h3> {{tournament.name}} : Manage Penalties/Bonuses </h3>
+    </div>
+</div>
+<div class="modal-body" id="dclnew" class="penalty-modal-body">
+    <div class="tournament-penalty-modal">
+        <form class="form-inline">
+            <div class="form-group" style="margin-right:20px;" ng-class="{'has-error': !newPenalty.team}">
+                <label for="teamname">Team</label>
+                <select id='teamname' class="form-control" id="Team" ng-model="newPenalty.team"
+                        ng-options="t.name for t in teams" ng-required="true"></select>
+            </div>
+            <div class="form-group"  style="margin-right:20px;">
+                <label for="isbonus">Bonus</label>
+                <select id="isbonus" class="form-control" ng-model="newPenalty.isbonus"
+                        ng-options="b for b in [true, false]"></select>
+            </div>
+            <div class="form-group">
+                <label for="ag">Points</label>
+                <select id="ag" class="form-control" ng-model="newPenalty.points"
+                        ng-options="p for p in [1, 2, 3, 4]"></select>
+            </div>
+        </form>
+        <form class="form-inline" style="margin-top: 10px">
+            <div class="form-group" ng-class="{'has-error': !newPenalty.reason}">
+                <label for="name">Reason</label>
+                <input id="name" style="width:400px" class="form-control" placeholder="Enter Reason: Missed Umpiring" id="reason"
+                       ng-model="newPenalty.reason" ng-required="true">
+            </div>
+            <button class="btn btn-primary" ng-click="addPenalty()" ng-class="{'disabled': !newPenalty.reason || !newPenalty.team }">Add</button>
+         </form>
+
+        <div>
+            <h3> Current Penalties And Bonus: </h3>
+            <div ng-if="penalties.length">
+                <div ng-repeat="p in penalties">
+                    <div ng-if="p.penalties.length > 0">
+                        <h4>Team {{p.team.name}} : </h4>
+                        <div ng-repeat="penalty in p.penalties">
+                            <span class="glyphicon glyphicon-minus-sign lefty remove-penalty-icon" aria-hidden="true" ng-click="removePenalty(penalty.id)"> </span>
+                            <span ng-class="{bonus: penalty.isbonus, penalty: !penalty.isbonus}"> {{penalty.points}}</span>
+                            {{penalty.reason}} </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="!penalties.length">
+                No Penalties
+            </div>
+        </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-warning" ng-click="cancel()">Done</button>
+    </div>
+</div>

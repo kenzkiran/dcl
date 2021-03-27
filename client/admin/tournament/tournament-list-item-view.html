@@ -1,0 +1,18 @@
+<div class="col-md-10 dcl-list-item">
+  <div class="col-md-8 col-sm-6">
+    <div class="tournament-name">
+        <a ng-if='isadmin' ui-sref="admin.tournament.instance({id:tournament.id})"> {{tournament.name}} </a>
+        <a ng-if='!isadmin' ui-sref="tournaments.instance.matches({id:tournament.id})"> {{tournament.name}} </a>
+    </div>
+    <div class="pull-left">
+        <span class="info-bold"> {{tournament.tourneyType}} | {{tournament.matchType}} | {{tournament.division}} | {{tournament.gameType}} | {{tournament.ageGroup}} |  {{tournament.gender}} </span>
+        | <span class="info-mute">  {{tournament.startDate | date:'dd-MMMM-yyyy'}}    -    {{tournament.endDate || 'TBD' | date: 'dd-MMMM-yyyy'}} </span>
+    </div>
+</div>
+  <div class="col-md-2 col-sm-6 tournament-status">
+    <span id='tstatus'> {{tournament.status}} </span>
+</div>
+  <div class="col-md-2 col-sm-6 text-center">
+    <span ng-if='isadmin' class="glyphicon glyphicon-pencil item-tools" uib-tooltip="Edit" ng-click="edit({tourney: tournament});"> </span>
+</div>
+</div>

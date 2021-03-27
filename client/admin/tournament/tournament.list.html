@@ -1,0 +1,15 @@
+<div>
+    <div class="row">
+        <div class="col-md-10 text-center dcl-title-box tournament">Tournaments</div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 tool-container">
+            <div class="tool-info">
+                <span class="glyphicon glyphicon-plus-sign"  uib-tooltip="Add Tournament" aria-hidden="true" ng-click="add()"></span>
+            </div>
+        </div>
+    </div>
+    <div ng-repeat="t in tournaments">
+        <div class="row" tournament='t' on-edit="add(tourney)" isadmin='true' ptf-tournament-list></div>
+    </div>
+</div>

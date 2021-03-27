@@ -1,0 +1,63 @@
+<div class="row" class="match-view">
+    <div class="col-md-12" ng-if='status === "success"'>
+        <!-- Match Header -->
+        <div class="match-view-header">
+            <div class="row resultbar">
+                <div class="col-md-3"><a ui-sref="matches.iedit({id: match.id})" ng-show="!match.lock"><h2 class="label label-primary">Edit</h2></a></div>
+                <div class="col-md-6 text-center"> {{headerWinLossTitle}} </div>
+                <div class="col-md-3"></div>
+            </div>
+          <div class="row">
+            <div class="col-md-8 col-sm-8 col-md-offset-2">
+                <div class="row">
+                    <div ng-class="firstBattingStyle">
+                        <div class="col-md-4 team-name text-right">{{firstBattingTeamName()}}</div>
+                        <div class="col-md-2 team-score text-right">{{firstBattingScore()}}</div>
+                    </div>
+                    <div ng-class="secondBattingStyle">
+                        <div class="col-md-2 team-score  text-left">{{secondBattingScore()}}</div>
+                        <div class="col-md-4 team-name text-left">{{secondBattingTeamName()}}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 text-right" ng-class="firstBattingStyle">Run Rate : {{inningsRunRate(1)}}</div>
+                    <div class="col-md-2 text-right" ng-class="firstBattingStyle"> {{firstInningOvers() + "/" + getMaxOvers(1)}}</div>
+                    <div class="col-md-2 text-left" ng-class="secondBattingStyle">{{secondInningOvers() + "/" + getMaxOvers(2)}}</div>
+                    <div class="col-md-4 text-left" ng-class="secondBattingStyle">{{inningsRunRate(2)}} : Run Rate</div>
+                </div>
+                <div class="row info">
+                    <div class="col-md-3 text-left">Date: {{match.date | date:'dd-MMMM-yyyy'}}</div>
+                    <div class="col-md-3 text-left">Venue: {{match.ground.name || "Planet Earth"}}</div>
+                    <div class="col-md-6 text-left">Umpires: {{match.umpireOne.name}} / {{match.umpireTwo.name}}</div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div class="match-inning">
+            <uib-accordion close-others="false">
+                <div inning="formattedInningOne" ptf-inning-view></div>
+                <div inning="formattedInningTwo" ptf-inning-view></div>
+            </uib-accordion>
+        </div>
+    </div>
+    <div class="col-md-12" ng-if='status === "error"'>
+        <div ng-if="match" class="match-score-header">
+            <div class="row">
+                <div class="col-md-8 col-sm-8 col-md-offset-2">
+                    <div class="match-score-teams"> {{match.teamOne.name}} vs {{match.teamTwo.name}}</div>
+                    <div class="info-bold">
+                        Umpire 1: {{match.umpireOne.name}} | Umpire 2: {{match.umpireTwo.name}} | Played on:  {{match.date | date:'dd-MMMM-yyyy'}} | Played at: {{match.ground.name}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="dcl-error-msg">
+            <p class="header" >That's a Noball! Something went wrong </p>
+            <div> {{statusString}} </div>
+            <div ng-if="match.lock" style="font-weight: bold"> <h2 class="label label-danger">Match Locked, Please Contact Admin to unlock</h2></div>
+            <a ui-sref="matches.iedit({id: match.id})" ng-show="!match.lock"><h2 class="label label-success">Add/Edit Scoresheet</h2></a>
+        </div>
+    </div>
+</div>

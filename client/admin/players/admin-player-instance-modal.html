@@ -1,0 +1,55 @@
+<div class="modal-header">
+  <div class="modal-title">
+    <h3> Manage Admin Profile:  <span class="player-profile-name" style="text-transform: capitalize"> {{player.firstName}} {{player.lastName}} </span> </h3>
+  </div>
+</div>
+<div class="modal-body" id="dclnew" class="penalty-modal-body">
+  <form class="form-signup">
+    <div class="form-group">
+      <label for="approved" style="min-width:150px">Approved</label>
+      <select ng-model="approved" style="width:100px;" class="input-sm">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+      <span style="color: green" ng-show="approved !== originalApproved"> was {{ getTextForValue(originalApproved) }}</span>
+    </div>
+    <div class="form-group">
+      <label for="certified" style="min-width:150px">Certifed</label>
+      <select ng-model="certified" style="width:120px;" class="input-sm">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+      <span style="color: green" ng-show="certified !== originalCertified"> was {{ getTextForValue(originalCertified) }}</span>
+    </div>
+    <div class="form-group">
+        <label for="certLevel" style="min-width:150px" >Certification Level</label>
+        <select ng-model="certLevel" style="width:100px;" class="input-sm">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <span style="color: green" ng-show="certLevel !== originalCertLevel"> was {{ originalCertLevel }}</span>
+    </div>
+    <div class="form-group">
+      <label for="Email Verified" style="min-width:150px" >Email Verified</label> {{emailVerified}}
+    </div>
+    <div class="form-group" ng-if="emailVerified == false">
+       <button class="btn btn-primary"> Resend Email Verification </button>
+    </div>
+    <div class="form-group">
+        <output> Email: {{player.owner.email}} </output>
+        <output> Address: {{player.address1}} </output>
+        <output> {{player.address2}} </output>
+        <output class="capitalize"> City: {{player.city1}} </output>
+        <output> Zipcode: {{player.zipcode1}} </output>
+        <output> State: {{player.state1}} </output>
+        <output> Phone: {{player.phonenumber}} </output>
+     </div> 
+    <div class="modal-footer">
+      <button class="btn btn-warning" ng-click="cancel()">Done</button>
+      <button class="btn btn-success" ng-disabled="!hasChanged()" ng-click="update()">Update</button>
+      <div> <span id="result" ng-show="status.length"> {{status}} </span> </div>
+    </div>
+  </form>
+</div>

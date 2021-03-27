@@ -1,0 +1,7 @@
+dist/
+.editorconfig
+.npmignore
+*.log
+client/bower_components
+node_modules/
+*.scssc

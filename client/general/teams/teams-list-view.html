@@ -1,0 +1,8 @@
+<div>
+  <div class="row">
+    <div class="col-md-10 text-center dcl-title-box team">Teams</div>
+  </div>
+  <div ng-repeat="t in teams">
+    <div class='row' team='t' postfix='teamTypeToPostfix(t.type)' ptf-general-team-list></div>
+  </div>
+</div>

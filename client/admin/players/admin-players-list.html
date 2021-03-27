@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            Quick Search:&nbsp;&nbsp;
+            <span ng-repeat="link in links">
+                <a href="" ng-click="getPlayersByNameStartingWith(link)" >{{ link }}</a>
+                &nbsp;&nbsp;
+            </span>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            Name:&nbsp;&nbsp;<input type="text" ng-model="$parent.searchText" style="width:100px;" class="input-sm" />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            Active Status:
+            <select ng-model="$parent.active" style="width:100px;" class="input-sm">
+                <option value="0">All</option>
+                <option value="1">Active</option>
+                <option value="2">InActive</option>
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            Certified Status:
+            <select ng-model="$parent.certified" style="width:100px;" class="input-sm">
+                <option value="0">All</option>
+                <option value="1">Certified</option>
+                <option value="2">Non Certified</option>
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            Approved:
+            <select ng-model="$parent.approved" style="width:100px;" class="input-sm">
+                    <option value="0">All</option>
+                    <option value="1">True</option>
+                    <option value="2">False</option>
+            </select>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-primary" style="width:100px;" ng-click="searchPlayers()">Search</button>
+            </br>
+        </div>
+    </div>
+    </br>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8"> Email Verified:
+            <label><input type="radio" ng-model="$parent.emailVerified" value="any" ng-init="$parent.emailVerified='any'"> Any</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <label><input type="radio" ng-model="$parent.emailVerified" value="true"> Yes </label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <label><input type="radio" ng-model="$parent.emailVerified" value="false"> No </label>
+        </div>
+    </div>
+</div>
+    <br/>
+    <div class="row row-eq-height" ng-show="players.length > 0">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 text-center">
+            <ul class="pager">
+                <li ><a href="" ng-click="goToFirstPage()" ng-class="{linkDisabled: (currentPage == 1)}">First</a></li>
+                <li><a href="" ng-click="goToPreviousPage()" ng-class="{linkDisabled: (currentPage == 1)}">Previous</a></li>
+                <li style="padding-left:10px;padding-right:10px;">Page: {{currentPage}}/{{pageCount}}</li>
+                <li><a href="" ng-click="goToNextPage()" ng-class="{linkDisabled: (currentPage == pageCount)}">Next</a></li>
+                <li><a href="" ng-click="goToLastPage()" ng-class="{linkDisabled: (currentPage == pageCount)}">Last</a></li>
+            </ul>
+        </div>
+    </div>
+    <div ui-view ng-show="players.length > 0"> Put your content here </div>
+</div>

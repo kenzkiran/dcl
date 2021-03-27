@@ -1,0 +1,32 @@
+<!-- Match Found -->
+<div ng-show="match">
+       <!-- Match Found, Show Header -->
+        <div class="row">
+            <div class="col-md-12 match-score-header">
+                <div class="row">
+                    <div class="col-md-8 col-sm-8 col-md-offset-2">
+                        <div class="match-score-teams"> {{match.teamOne.name}} vs {{match.teamTwo.name}}</div>
+                        <div class="info-bold"><span> Umpire 1: {{match.umpireOne.name}} | Umpire 2: {{match.umpireTwo.name}} | Played on:  {{match.date | date:'dd-MMMM-yyyy'}} | Played at: {{match.ground.name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <!-- Match Found, but locked add Error -->
+        <div class="row" ng-show="match.lock">
+            <div class="dcl-error-msg">
+                <p class="header" > Time up.. End of Play Gentlemen! </p>
+                <div> Scores Locked, Contact Admin to Unlock </div>
+            </div>
+        </div>
+        <!-- Match Found and not locked, show editable scoresheet-->
+        <div ng-show="!match.lock" ptf-score-sheet-editable></div>
+</div>
+<!-- Match Not Found : Show Error -->
+<div ng-show="!match">
+    <div class="dcl-error-msg">
+        <p class="header"> Oops ! Something Went Wrong! </p>
+        <div> Match Not Found </div>
+    </div>
+</div>
