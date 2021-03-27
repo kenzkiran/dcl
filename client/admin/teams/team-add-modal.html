@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h3 class="modal-title"> {{task}} Team </h3>
+</div>
+<div class="modal-body">
+    <form>
+        <div class="form-group" ng-class="{'has-error': !newTeam.name}">
+            <label for="name">Name</label>
+            <input id="name" class="form-control" placeholder="Enter Team name here" id="teamName"
+                   ng-model="newTeam.name" ng-required="true">
+        </div>
+        <div class="form-group" ng-class="{'has-error': !newTeam.location}">
+            <label for="name">Location</label>
+            <input id="name" class="form-control" placeholder="Enter Location/City here" id="teamLocation"
+                   ng-model="newTeam.location" ng-required="true">
+        </div>
+        <div class="form-group">
+            <label for="active">Type</label>
+            <select class="form-control" id="active" ng-model="newTeam.type"
+                    ng-options="a for a in types"></select>
+        </div>
+        <div class="form-group">
+            <label for="active">Active</label>
+            <select class="form-control" id="active" ng-model="newTeam.active"
+                    ng-options="a for a in [true, false]"></select>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-class="{disabled: !newTeam.name && !newTeam.location}" ng-click="add()">SAVE
+    </button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

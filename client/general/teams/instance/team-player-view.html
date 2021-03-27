@@ -1,0 +1,32 @@
+<div class="col-sm-6 col-md-4" style="margin-top: 20px;">
+    <div class="thumbnail">
+        <img style="height: 150px; width: auto;" src="/logos/player_placeholder.png">
+        <div>
+            <div class="caption"
+                 ng-class="{'player-active': player.active,
+                 'player-inactive': !player.active,
+                 'captain-label-color':isCaptain(),
+                 'vicecaptain-label-color':isVice(),
+                 'admin-label-color':isAdmin()}">
+                <div class="player-name">{{player.firstName}} {{player.lastName}}
+                    <span class="pull-right" style="font-size:.9em;">
+                        <span ng-if="isCaptain()"> (Captain) </span>
+                        <span ng-if="isVice()"> (ViceCaptain) </span>
+                        <span ng-if="isAdmin()"> (Admin) </span>
+                    </span>
+                </div>
+            </div>
+            <div class="row player-info">
+                <div class="col-sm-9 col-md-9 col-xs-9">
+                    <div class="player-info-text">
+                        <div>Bat: {{player.battingStyle}}</div>
+                        <div>Bowl: {{player.bowlingStyle}}</div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3 col-xs-3">
+                    <span class="glyphicon glyphicon-pencil player-item-tools" ng-click="edit({player: player})"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

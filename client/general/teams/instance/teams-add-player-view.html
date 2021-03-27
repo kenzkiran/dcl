@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="row" style="margin-top: 30px;">
+      <div class="team-name-title">Add Player for:  <a ui-sref="teams.instance({id: id})"> {{team.name}} </a></div>
+      <div class="info-bold" style="font-size: 20px; font-weight: bolder;">{{team.location}}</div>
+      <div class="info-bold" ng-if="team.active" style="margin-top: 5px;"><span class="team-active">Active </span></div>
+      <div class="info-bold" ng-if="!team.active" style="margin-top: 5px;"><span class="team-inactive"> Not Active</span></div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <input type="text" class="search-player" placeholder="Search by Player Name" ng-model="searchtext">
+      </div>
+      <div class="col-md-6">
+          <input type="text" class="search-player" placeholder="Search by Email (enter full email)" ng-model="searchemail">
+        </div>
+        <div class="col-md-2" style="position: relative; top: 14px;">
+          <button ng-class="{disabled: !validEmail}" class="btn btn-warning" ng-click="searchByEmail()"> Search By Email </button></div>
+    </div>
+    <div class="row">
+      <div style="font-size: 16px; font-weight: bolder; margin-bottom: 10px;"> Current Active Players : <span class="player-active-label player-name" ng-repeat="p in players">
+        <span> {{p.firstName}} {{p.lastName}} </span>
+        <span class="glyphicon glyphicon-plus-plus lefty" uib-tooltip="Add Player"
+          aria-hidden="true" ng-click="removePlayer(player)"></span>
+        </span>
+      </div>
+      <div style="font-size: 16px; font-weight: bolder; margin-bottom: 10px;"> Current Inactive Players : <span class="player-active-label player-name" ng-repeat="p in iaplayers">{{p.firstName}} {{p.lastName}} </span> </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <h4>Search Results: </h4>
+</div>
+<div class="row">
+  <div ng-if="searchedPlayers.length">
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-condensed table-striped">
+          <tr>
+            <th class="col-md-2 text-left">Name</th>
+            <th class="col-md-1 text-center">Active?</th>
+            <th class="col-md-1 text-center">Add?</th>
+          </tr>
+          <tr ng-repeat="player in searchedPlayers">
+            <td class="col-md-2 text-left">
+              <a ui-sref="players.instance({id: player.id})"> <span class="player-name"> {{player.firstName}}  {{player.lastName}} </span></a>
+            </td>
+            <td class="col-md-1 text-center">{{(player.active ? "Yes" : "No")}}</td>
+            <td class="col-md-1 text-center">
+              <span ng-if="player.isCurrent"> Current </span>
+              <span ng-if="!player.isCurrent" class="glyphicon glyphicon-plus-sign lefty" uib-tooltip="Add Player"
+                aria-hidden="true" ng-click="addPlayer(player)"></span>
+              </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div ng-if="!searchedPlayers.length && searchtext.length">
+    No players found found!!
+  </div>
+</div>

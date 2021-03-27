@@ -1,0 +1,50 @@
+#dclnew {
+  .ground {
+    background-color: $dcl-ground-header-bg;
+    color: $dcl-ground-header-font-color;
+  }
+
+  .ground-name {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+  }
+
+  .ground-info {
+    text-align: left;
+  }
+  .ground-selected {
+    @extend .dcl-list-item;
+    background-color: $dcl-ground-selected-bg;
+    color: $dcl-ground-selected-color;
+  }
+
+  .ground-selected:hover {
+    background-color: $dcl-ground-selected-bg;
+    color: $dcl-ground-selected-color;
+    box-shadow: 0px 0px 0px 0px;    
+  }  
+
+  .ground-status {
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    text-align: center;
+    padding: 4px;
+    color: white;
+    border-radius: 2px;
+  }
+
+  .ground-active {
+    @extend .ground-status;
+    background-color: $dcl-team-active-color;
+  }
+
+  .ground-inactive {
+    @extend .ground-status;
+    background-color: $dcl-team-inactive-color;
+    color: black;
+  }
+}

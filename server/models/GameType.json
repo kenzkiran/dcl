@@ -1,0 +1,17 @@
+{
+  "name": "GameType",
+  "strict": true,
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "doc": "Unique Game type Id"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "doc": "Tape, Leather"
+    }
+  }
+}

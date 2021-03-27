@@ -1,0 +1,27 @@
+{
+    "name": "Demography",
+    "strict": true,
+    "properties": {
+        "id": {
+            "type": "number",
+            "id": true,
+            "generated": true,
+            "doc": "Unique Demography Id"
+        },
+        "ageGroup": {
+            "type": "string",
+            "required": true,
+            "doc": " u16/u19/Professional"
+        },
+        "gender" : {
+            "type": "string",
+            "required": true,
+            "default": "Male",
+            "doc": "Based on ageGroup and Gender, client will decipher as U16 - Boys/ U16 - Girls etc"
+        }
+    },
+    "options": {
+        "strict": true
+    },
+    "hidden": ["created"]
+}

@@ -1,0 +1,60 @@
+{
+  "name": "AdminTasks",
+  "strict": true,
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "doc": "Task Id"
+    },
+    "created": {
+      "type": "Date",
+      "doc": "Creation time of this task"
+    },
+    "tasktype": {
+      "type": "string",
+      "doc": "Task Type Description",
+      "required": true
+    },
+    "data": {
+      "type": "object",
+      "doc": "Free Form Data"
+    },
+    "status": {
+      "type": "string",
+      "doc": "Status: completed/progress",
+      "default": "progress"
+    },
+    "result": {
+      "type": "string",
+      "doc": "Optional result: approved/rejected",
+      "default": "none"
+    }
+  },
+  "options": {
+    "strict": true
+  },
+  "relations": {
+    "requester": {
+      "model": "Player",
+      "type": "belongsTo",
+      "foreignKey": "playerId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "dcladmin",
+      "permission": "ALLOW",
+      "property": "*"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ]
+}

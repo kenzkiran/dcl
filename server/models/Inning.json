@@ -1,0 +1,121 @@
+{
+    "name": "Inning",
+    "properties": {
+        "id": {
+            "type": "number",
+            "id": true,
+            "generated": true,
+            "doc": "Unique Player Id"
+        },
+       "order": {
+           "type": "number",
+           "default": 1,
+           "doc": "Innings order as in First/Second/Third/Fourth"
+       },
+       "maxOvers": {
+           "type": "number",
+           "default": 20,
+           "doc": "Maximum number of overs played in this innings, could be reduced if rain interrupts"
+       },
+       "byes": {
+           "type": "number",
+           "default": 0,
+           "doc": "Byes against keeper"
+       },
+       "legByes": {
+           "type": "number",
+           "default": 0,
+           "doc": "leg byes by the bowling team"
+       },
+       "nobes": {
+           "type": "number",
+           "default": 0,
+           "doc": "nobes by the bowling team"
+       },
+       "wides": {
+           "type": "number",
+           "default": 0,
+           "doc": "wides by the bowling team"
+       },
+       "overThrows": {
+           "type": "number",
+           "default": 0,
+           "doc": "overThrows by the bowling team"
+       },
+       "extras": {
+           "type": "number",
+           "default": 0,
+           "doc": "DERIVED - extras (total of wides, leg byes, nobes)"
+       },
+       "scoredRuns": {
+           "type": "number",
+           "default": 0,
+           "doc": "DERIVED - Runs scored by batsmen"
+       },
+       "totalRuns": {
+           "type": "number",
+           "default": 0,
+           "doc": "DERIVED - Batting team total runs scored"
+       },
+       "wickets": {
+           "type": "number",
+           "default": 0,
+           "doc": "DERIVED - Wickets fell"
+       },
+      "totalOvers": {
+        "type": "number",
+        "default": 0,
+        "doc": "DERIVED - Sum of total overs bowled"
+      },
+      "runRate": {
+        "type": "number",
+        "default": 0.0,
+        "doc": "DERIVED - Total Runs/Total Overs"
+      },
+       "revisedtotal": {
+            "type": "number",
+            "default": 0,
+            "doc": "Revised target in case of rain or other interruptions"
+        },
+        "numPlayers" : {
+          "type": "number",
+          "default": 11,
+          "doc": "Total number of players fielded by Batting Team"
+        },
+        "notes": {
+            "type": "string",
+            "default": "All is well",
+            "doc": "Any notes on rain interruptions, delays, cancellation etc, free form"
+        }
+    },
+    "relations": {
+        "match": {
+            "model":"Match",
+            "type":"belongsTo",
+            "foreignKey":"matchId"
+        },
+        "battingTeam": {
+            "model": "Team",
+            "type": "belongsTo",
+            "foreignKey": "battingTeamId"
+        },
+        "bowlingTeam": {
+            "model": "Team",
+            "type": "belongsTo",
+            "foreignKey": "bowlingTeamId"
+        },
+        "batting": {
+            "model": "BattingScore",
+            "type": "hasMany",
+            "foreignKey": "inningId"
+        },
+        "bowling": {
+            "model": "BowlingScore",
+            "type": "hasMany",
+            "foreignKey": "inningId"
+        }
+    },
+    "options": {
+        "strict": true
+    }
+}

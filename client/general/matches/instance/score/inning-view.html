@@ -1,0 +1,100 @@
+<div class="col-md-12 match-inning-view">
+
+    <uib-accordion-group class="panel-default" is-open="panelOpen" style="padding: 5px;">
+        <uib-accordion-heading>
+            <div class="text-center">
+                <strong> {{inning.order | ptfOrder}} Innings  </strong>
+                <i class="pull-right glyphicon"  ng-class="{'glyphicon-chevron-right': panelOpen, 'glyphicon-chevron-down': !panelOpen}"></i>
+            </div>
+        </uib-accordion-heading>
+        <div class ="row">
+            <div class="score-header"> Batting : {{inning.battingTeam.name}} </div>
+            <table class="table table-condensed table-striped">
+                <tr style="border: 1px solid darkgray;">
+                    <th class="text-center">#</th>
+                    <th class="col-md-2 col-sm-2 text-center">Batsman</th>
+                    <th class="col-md-1 col-sm-1  text-center">Status</th>
+                    <th class="col-md-2 col-sm-2  text-center">Fielder</th>
+                    <th class="col-md-2 col-sm-2  text-center">Bowler</th>
+                    <th class="col-md-1 col-sm-1  text-center">Runs</th>
+                    <th class="col-md-1 col-sm-1  text-center">Balls</th>
+                    <th class="col-md-1 col-sm-1  text-center">Fours</th>
+                    <th class="col-md-1 col-sm-1  text-center">Sixes</th>
+                    <th class="col-md-1 col-sm-1  text-center">StrikeRate</th>
+                </tr>
+                <tr  ng-repeat="battingScore in inning.battingScores.played">
+                    <th class="text-center">{{$index + 1}}</th>
+                    <th class="text-left">{{battingScore.batsman.firstName}} {{battingScore.batsman.lastName}}</th>
+                    <th class="text-center">{{battingScore.status}}</th>
+                    <th class="text-center">{{getFielder(battingScore)}}</th>
+                    <th class="text-center">{{getBowler(battingScore)}}</th>
+                    <th class="text-center">{{battingScore.runs}}</th>
+                    <th class="text-center">{{battingScore.balls}}</th>
+                    <th class="text-center">{{battingScore.four}}</th>
+                    <th class="text-center">{{battingScore.six}}</th>
+                    <th class="text-center">{{getStrikeRate(battingScore)}}</th>
+                </tr>
+                <tr class="extras-bar">
+                    <th class="text-center"></th>
+                    <th class="text-left bold"> EXTRAS </th>
+                    <th class="text-center"></th>
+                    <th class="text-center"> ({{extras.extrasStr}})</th>
+                    <th class="text-center"></th>
+                    <th class="text-center"> {{extras.total}}</th>
+                    <th class="text-center"></th>
+                    <th class="text-center"></th>
+                    <th class="text-center"></th>
+                    <th class="text-center"></th>
+                </tr>
+                <tr class="total-bar">
+                    <th class="text-center"></th>
+                    <th class="text-left bold"> TOTAL </th>
+                    <th class="text-center"></th>
+                    <th class="text-center">( WKTS: {{inning.overAndrr.wickets}},  RR: {{inning.overAndrr.rr}})</th>
+                    <th class="text-center"></th>
+                    <th class="text-center"> {{inning.totalRuns}}</th>
+                    <th class="text-center"></th>
+                    <th class="text-center"></th>
+                    <th class="text-center"></th>
+                    <th class="text-center"></th>
+                </tr>
+            </table>
+            <div class="dnb">
+                <div> DID NOT BAT: </div>
+                <div class="players" ng-repeat="bs in inning.battingScores.dnb"> {{bs.batsman.firstName}} {{bs.batsman.lastName}} </div>
+            </div>
+        </div>
+        <hr/>
+        <div class ="row">
+        <div class="score-header"> Bowling : {{inning.bowlingTeam.name}} </div>
+        <table class="table table-condensed table-striped">
+                <tr style="border: 1px solid darkgray;">
+                    <th class="text-center">#</th>
+                    <th class="col-md-2 col-sm-2 text-center">Bowler</th>
+                    <th class="col-md-1 col-sm-1  text-center">Overs</th>
+                    <th class="col-md-1 col-sm-1  text-center">Maidens</th>
+                    <th class="col-md-1 col-sm-1  text-center">Runs</th>
+                    <th class="col-md-1 col-sm-1  text-center">Wickets</th>
+                    <th class="col-md-1 col-sm-1  text-center">Wides</th>
+                    <th class="col-md-1 col-sm-1  text-center">Noballs</th>
+                    <th class="col-md-1 col-sm-1  text-center">Four</th>
+                    <th class="col-md-1 col-sm-1  text-center">Six</th>
+                    <th class="col-md-1 col-sm-1  text-center">Economy</th>
+                </tr>
+                <tr  ng-repeat="bowlingScore in inning.bowlingScores">
+                    <th class="text-center">{{$index + 1}}</th>
+                    <th class="text-left">{{bowlingScore.bowler.firstName}} {{bowlingScore.bowler.lastName}}</th>
+                    <th class="text-center">{{bowlingScore.overs}}.{{bowlingScore.balls}}</th>
+                    <th class="text-center">{{bowlingScore.maidens}}</th>
+                    <th class="text-center">{{bowlingScore.runs}}</th>
+                    <th class="text-center">{{bowlingScore.wickets}}</th>
+                    <th class="text-center">{{bowlingScore.wides}}</th>
+                    <th class="text-center">{{bowlingScore.noballs}}</th>
+                    <th class="text-center">{{bowlingScore.four}}</th>
+                    <th class="text-center">{{bowlingScore.six}}</th>
+                    <th class="text-center"> {{bowlingScore.runs/((bowlingScore.overs * 6 + bowlingScore.balls)/6.0) | number:2}}</th>
+                </tr>
+            </table>
+        </div>
+    </uib-accordion-group>
+</div>

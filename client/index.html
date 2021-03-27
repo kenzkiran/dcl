@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>DCL Client</title>
+    <!--
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="components/underscore.js"></script>
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/animate.css" rel="stylesheet">
+    <link href="styles/dcl-client.css" rel="stylesheet">
+    <link href="styles/dclstyles.css" rel="stylesheet">
+</head>
+<body ng-app="dclApp">
+<div class="container" ng-controller="dclCtrl">
+    <div>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Dallas Cricket</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a ui-sref='about'>About</a></li>
+                        <li><a ui-sref='grounds.list'>Ground</a></li>
+                        <li><a ui-sref='teams.list'>Teams</a></li>
+                        <li><a ui-sref='tournaments.list'>Tournaments</a></li>
+                        <li><a ui-sref='players.list.details'>Players</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- Shortcut Bell icon to direct to announcements -->
+                        <li ng-if="loggedin" id="registration" class="active"><a ui-sref="registrations.team">Register Team</a></li>
+                        <li ui-sref="players.editsettings" ng-if="loggedin" class="active" style="text-transform: capitalize;"><a>{{greeting}} <i class="glyphicon glyphicon-user" style="position: relative; top:3px;font-size:16px"> </i></a></li>
+                        <li ng-if="loggedin" id="logout" class="active"><a ng-click="logout()">Logout</a></li>
+                        <li ng-if="!loggedin" id="login" class="active"><a ui-sref="signin">Login</a></li>
+                        <li ng-if="showAdmin" class="active"><a ui-sref="admin.tournament.list">Admin</a></li>
+                        <li><a ui-sref="announcements.list" uib-tooltip="Announcements"><i class="glyphicon glyphicon-bell" style="font-size:16px"></i></a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+        </nav>
+        <div id="dclcontainer">
+            <div id="dclnew" ui-view> </div>
+        </div>
+
+    </div>
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="components/angular.js"></script>
+<script src="components/release/angular-ui-router.js"></script>
+<script src="components/angular-cookies.js"></script>
+<script src="components/angular-resource.js"></script>
+<script src="components/angular-animate.js"></script>
+<script src="components/ui-bootstrap-tpls.js"></script>
+
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+<script src="scripts/main.js"></script>
+<!-- Javascript for rich text editor in announcements section (admin controlled) -->
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+</body>
+</html>
+

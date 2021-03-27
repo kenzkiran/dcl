@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-md-12 announcement-instance-header">
+        <div class="beautified-date no-gutter pull-left">
+            <span class="month">{{announcement.published|date:'MMM'}}</span>
+            <span class="date">{{announcement.published|date:'dd'}}</span>
+            <span class="year">{{announcement.published|date:'yyyy'}}</span>
+        </div>
+        <span class="announcement-title" style="vertical-align: center"> {{announcement.title}}</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" ng-bind-html="trustHtml(announcement.content)">
+    </div>
+</div>
+<div class="row" top-buffer>
+  <div class="col-md-3"><a ui-sref="announcements.list" class="btn btn-primary">Back to Announcements</a>
+  </div>
+</div>    
+

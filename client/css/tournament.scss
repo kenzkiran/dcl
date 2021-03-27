@@ -1,0 +1,146 @@
+//TODO: Remove upper  #dclnew later
+#dclnew {
+  .tournament {
+    background-color: $dcl-tournament-header-bg;
+    color: $dcl-tournament-header-font-color;
+  }
+
+  .tournament-name {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .tournament-status {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .tournament-instance-header {
+    @extend .box;
+    margin: 20px 0px 10px 0px;
+    padding: 25px;
+    background-color: $dcl-tournament-header-bg;
+    color: $dcl-tournament-header-font-color;
+
+    .info {
+      color: $dcl-tournament-header-info-font-color;
+    }
+  }
+
+  .tournament-match-list {
+    .ground-info {
+      position: relative;
+      top: 15px;
+    }
+
+    .match-date {
+      position: relative;
+      top: 20px;
+    }
+  }
+
+  .penalty-modal-body {
+    height: 200px !important;
+    overflow-y: auto;
+  }
+
+  .tournament-penalty-modal {
+    font-size: 16px;
+
+    .points {
+      color: white;
+      padding-left:3px;
+      padding-right:3px;
+    }
+
+    .remove-penalty-icon {
+      position: relative;
+      top: 2px;
+    }
+    .penalty {
+      @extend .points;
+      background-color: red;
+
+    }
+
+    .penalty::before {
+      content:"\002D";
+    }
+
+    .bonus {
+      @extend .points;
+      background-color: green;
+    }
+
+    .bonus::before {
+        content:"\002B";
+    }
+
+    .remove-penalty-icon {
+      color: #8c1616;
+    }
+  }
+    .tournament-add-team-modal {
+    font-size: 18px;
+
+    .team-band {
+      padding: 2px;
+      font-size: 20px;
+      color: white;
+      font-weight: bolder;
+      background-color: $dcl-tournament-header-bg;
+      margin-bottom: 6px;
+    }
+    .team-row {
+      height:24px;
+      padding: 3px;
+      margin-bottom: 4px;
+
+      .team-icon {
+        font-size: 18px;
+        padding-top: 4px;
+        position: relative;
+        top: -5px;
+      }
+      .remove-team-icon {
+        @extend .team-icon;
+        color: red;
+      }
+      .add-team-icon {
+        @extend .team-icon;
+        color: green;
+      }
+
+      .team-name {
+        font-size: 18px;
+        position: relative;
+        top: -8px;
+      }
+    }
+  }
+
+  .team-standings {
+    .team-name {
+      font-weight: bold;
+
+    }
+    .team-name:hover {
+      color: $color2;
+    }
+  }
+  @font-face {
+    font-family: 'Glyphicons Halflings';
+
+    src: url('/assets/glyphicons-halflings-regular.eot');
+    src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/glyphicons-halflings-regular.woff') format('woff'),
+    url('/assets/glyphicons-halflings-regular.ttf') format('truetype'),
+    url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  }
+
+}

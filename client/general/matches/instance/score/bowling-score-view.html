@@ -1,0 +1,41 @@
+<td>
+    <output style="margin:0px 5px;"> {{index + 1}}</output>
+</td>
+<td>
+    <select type="text" class="form-control" ng-model="bowlingScore.bowler"
+            ng-options="player.name for player in inning.bowlingTeam.players track by player.id">
+    </select>
+</td>
+<td>
+    <input type="number" class="form-control" ng-model="bowlingScore.overs" min="0" ng-disabled="!bowlingScore.bowler.id"> </input>
+</td>
+<td>
+    <input type="number" class="form-control" ng-model="bowlingScore.balls" min="0" max="5" ng-disabled="!bowlingScore.bowler.id"> </input>
+</td>
+<td>
+    <input type="number" class="form-control" ng-model="bowlingScore.maidens" min="0" ng-disabled="!bowlingScore.bowler.id"> </input>
+</td>
+<td>
+    <input type="number" class="form-control" ng-model="bowlingScore.runs" min="0" ng-disabled="!bowlingScore.bowler.id"> </input>
+</td>
+<td>
+    <input type="number" class="form-control" ng-model="bowlingScore.wickets" min="0" disabled> </input>
+</td>
+<td>
+    <input type="number" class="form-control" ng-model="bowlingScore.wides" min="0" ng-disabled="!bowlingScore.bowler.id"> </input>
+</td>
+<td>
+    <input type="number" class="form-control" ng-model="bowlingScore.noballs" min="0" ng-disabled="!bowlingScore.bowler.id"> </input>
+</td>
+<td>
+    <input type="number" class="form-control" ng-model="bowlingScore.four" min="0" ng-disabled="!bowlingScore.bowler.id"> </input>
+</td>
+<td>
+    <input type="number" class="form-control" ng-model="bowlingScore.six" min="0" ng-disabled="!bowlingScore.bowler.id"> </input>
+</td>
+<td>
+    <output type="text" class="form-control"> {{bowlingScore.runs/((bowlingScore.overs * 6 + bowlingScore.balls)/6.0) |
+        number:2}}
+    </output>
+</td>
+

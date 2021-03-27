@@ -1,0 +1,119 @@
+{
+  "name": "Tournament",
+  "strict": true,
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "doc": "Unique Tournament Id"
+    },
+    "name": {
+      "type": "String",
+      "required": true,
+      "default": "DCL Cup",
+      "doc": "Name of the Tournament"
+    },
+    "startDate": {
+      "type": "Date",
+      "required": true,
+      "doc": "Start Date of the Tournament"
+    },
+    "endDate": {
+      "type": "Date",
+      "doc": "End Date of the Tournament"
+    },
+    "status": {
+      "type": "String",
+      "default": "ONGOING",
+      "doc": "Status: ONGOING/COMPLETED/ABANDONED"
+    },
+    "tourneyType": {
+      "type": "String",
+      "default": "League",
+      "doc": "Summer League/Fall Knockout"
+    },
+    "gameType": {
+      "type": "String",
+      "default": "Tape",
+      "doc": "Tape/Leather/Tennis: Ball type used for game"
+    },
+    "matchType": {
+      "type": "String",
+      "default": "T-20",
+      "doc": "T-20/ODI/Other"
+    },
+    "division": {
+      "type": "String",
+      "doc": "Div A/Div B/Premier/First etc"
+    },
+    "ageGroup": {
+      "type": "string",
+      "default": "Professional",
+      "doc": " u16/u19/Professional"
+    },
+    "gender": {
+      "type": "String",
+      "default": "Male",
+      "doc": "Male/Female"
+    }
+  },
+  "relations": {
+    "teams": {
+      "model": "Team",
+      "type": "hasMany",
+      "foreignKey": "tournamentId",
+      "through": "Roaster"
+    },
+    "winner": {
+      "model": "Team",
+      "type": "belongsTo",
+      "foreignKey": "winnerId"
+    },
+    "runner": {
+      "model": "Team",
+      "type": "belongsTo",
+      "foreignKey": "tournamentId"
+    },
+    "matches": {
+      "model": "Match",
+      "type": "hasMany",
+      "foreignKey": "tournamentId"
+    }
+  },
+  "options": {
+    "strict": true
+  },
+  "hidden": [
+    "created"
+  ],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "dcladmin",
+      "permission": "ALLOW",
+      "property": "*"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findById"
+    }
+  ]
+}

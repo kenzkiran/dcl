@@ -1,0 +1,100 @@
+{
+    "name": "Team",
+    "strict": true,
+    "properties": {
+        "id": {
+            "type": "number",
+            "id": true,
+            "generated": true,
+            "doc": "Unique Team Id"
+        },
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "logo": {
+            "type": "string",
+            "default": "/path/to/default/team/log/url",
+            "doc": "URL for the team logo (png/jpeg)"
+        },
+        "created": {
+            "type": "Date",
+            "doc": "Creation time of the team"
+        },
+        "active": {
+            "type": "boolean",
+            "default": true,
+            "doc": "A team is active in the league or not"
+        },
+        "type": {
+            "type": "string",
+            "default": "tape",
+            "doc": "Type of team: tape, leather, T30"
+        },
+        "location": {
+            "type": "string",
+            "doc": "Location is the city of majority of players"
+        }
+    },
+    "relations": {
+        "players": {
+            "model": "Player",
+            "type": "hasAndBelongsToMany",
+            "foreignKey": "playerId"
+        },
+        "captain": {
+            "model": "Player",
+            "type": "belongsTo",
+            "foreignKey": "captainId"
+        },
+        "vice": {
+            "model": "Player",
+            "type": "belongsTo",
+            "foreignKey": "viceId"
+        },
+        "admin": {
+            "model": "Player",
+            "type": "belongsTo",
+            "foreignKey": "adminId"
+        },
+        "tourneys": {
+            "type": "hasMany",
+            "model": "Tournaments",
+            "foreignKey": "teamId",
+            "through": "Roaster"
+        }
+    },
+    "options": {
+        "strict": true
+    },
+    "hidden": ["created"],
+    "acls": [
+        {
+            "accessType": "*",
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "DENY"
+        },
+        {
+            "accessType": "*",
+            "principalType": "ROLE",
+            "principalId": "dcladmin",
+            "permission": "ALLOW",
+            "property": "*"
+        },
+        {
+            "accessType": "READ",
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "*"
+        },
+        {
+            "accessType": "WRITE",
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "*"
+        }
+    ]
+}

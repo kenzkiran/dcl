@@ -1,0 +1,34 @@
+{
+  "name": "Announcements",
+  "strict": true,
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "doc": "Post Id"
+    },
+    "title" : {
+      "type": "String",
+      "required": true,
+      "doc": "Title of the post"
+    },
+    "published": {
+      "type": "Date",
+      "required": true,
+      "doc": "Post published Date"
+    },
+    "content": {
+      "type": "String",
+      "default": "",
+      "doc": "Content of post"
+    },
+    "url": {
+       "type": "String",
+       "doc": "Absolute URL to the blog post"
+    }
+  },
+  "options": {
+    "strict": true
+  },
+  "hidden": ["created"]
+}

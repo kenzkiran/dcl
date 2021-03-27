@@ -1,0 +1,63 @@
+{
+	"disallowSpacesInsideObjectBrackets": true,
+	"disallowSpacesInsideArrayBrackets": true,
+	"requireCommaBeforeLineBreak": true,
+	"requireCamelCaseOrUpperCaseIdentifiers": {
+	    "ignoreProperties": true,
+	    "strict": false
+	},
+	"disallowMultipleLineStrings": true,
+	"disallowMixedSpacesAndTabs": true,
+	"requireParenthesesAroundIIFE": true,
+	"requireCapitalizedConstructors": true,
+	"requireDotNotation": true,
+	"requireCamelCaseOrUpperCaseIdentifiers": true,
+	"disallowYodaConditions": true,
+	"disallowKeywordsOnNewLine": ["else"],
+	"disallowTrailingWhitespace": true,
+	"validateIndentation": 4,
+	"requireSpacesInFunctionExpression": {
+	    "beforeOpeningCurlyBrace": true
+	},
+	"requireSpaceBeforeBinaryOperators": [
+	    "+",
+	    "-",
+	    "/",
+	    "*",
+	    "=",
+	    "==",
+	    "===",
+	    "!=",
+	    "!=="
+	],
+	"requireSpaceAfterBinaryOperators": [
+	    "+",
+	    "-",
+	    "/",
+	    "*",
+	    "=",
+	    "==",
+	    "===",
+	    "!=",
+	    "!=="
+	],
+	"requireSpaceAfterKeywords": [
+        "for",
+        "if",
+        "else",
+        "while",
+        "do",
+        "try",
+        "catch"
+     ],
+	"requireCurlyBraces": [
+	    "if",
+	    "else",
+	    "for",
+	    "while",
+	    "do",
+	    "try",
+	    "catch",
+	    "default"
+	]
+}

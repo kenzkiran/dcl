@@ -1,0 +1,137 @@
+/* tournament specific styles */
+/* teams specific styles */
+#dclnew {
+  /* dcl list item defaults */
+  /* top toolbar styles */
+  /* end of toolbar styles */
+}
+#dclnew textarea:focus, #dclnew input:focus {
+  outline: none;
+}
+#dclnew .box, #dclnew .dcl-list-item, #dclnew .dcl-title-box, #dclnew .tournament-instance-header {
+  margin: 10px 0px 10px 0px;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#dclnew .dcl-list-item {
+  border: solid 1px #ECECEC;
+  background-color: #ECF0F1;
+  text-align: center;
+}
+#dclnew .dcl-list-item .title-big {
+  font-weight: bold;
+  font-size: 20px;
+}
+#dclnew .dcl-list-item .title-md {
+  font-weight: bold;
+  font-size: 16px;
+}
+#dclnew .dcl-list-item .title-sm {
+  font-weight: bold;
+  font-size: 12px;
+}
+#dclnew .dcl-list-item .info-bold {
+  font-size: 15px;
+  color: #6E6C70;
+  font-weight: bold;
+}
+#dclnew .dcl-list-item:hover {
+  background-color: #E8F4FF;
+  color: #0B0B0B;
+  box-shadow: 5px 5px 5px 2px #2b3d4f;
+}
+#dclnew .dcl-title-box {
+  padding: 10px;
+  font-size: 24px;
+  border-radius: 5px;
+}
+#dclnew .tool-container {
+  margin: 15px 0px 15px 0px;
+  height: 62px;
+  border: solid 1px #ECECEC;
+  border-radius: 25px;
+}
+#dclnew .tool-info {
+  height: 100%;
+  padding: 15px 20px 15px 20px;
+  font-size: 14px;
+}
+#dclnew .tool-info .glyphicon {
+  font-size: 30px;
+}
+#dclnew .tool-info label {
+  margin: 5px 5px 0 0;
+}
+#dclnew .searchbox {
+  padding-left: 10px;
+  font-size: 14px;
+  width: 250px;
+  height: 30px;
+  border: 1px solid gainsboro;
+  border-radius: 20px;
+}
+#dclnew .searchbox:focus {
+  border: 1px solid rgba(14, 9, 211, 0.4);
+  box-shadow: 0 0 5px #008aff;
+}
+#dclnew a {
+  text-decoration: none;
+}
+#dclnew .highlighted {
+  background-color: #FEEE9D;
+}
+
+#dclnew .tournament {
+  background-color: #375A7F;
+  color: white;
+}
+#dclnew .tournament-name {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 24px;
+}
+#dclnew .tournament-status {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  text-align: center;
+}
+#dclnew .tournament-instance-header {
+  margin: 20px 0px 10px 0px;
+  padding: 25px;
+  background-color: #375A7F;
+  color: white;
+}
+#dclnew .tournament-instance-header .info {
+  color: #DDD;
+}
+#dclnew .tournament-match-list .ground-info {
+  position: relative;
+  top: 15px;
+}
+#dclnew .tournament-match-list .match-date {
+  position: relative;
+  top: 20px;
+}
+
+#dclnew .team {
+  background-color: #128F76;
+  color: white;
+}
+#dclnew .team-status {
+  margin-top: 12px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  text-align: center;
+  padding: 4px;
+}
+
+/* over ride glyphicons' 1px top setting because we position*/
+.glyphicon {
+  top: -2px;
+}
+
+/*# sourceMappingURL=dclstyles.css.map */

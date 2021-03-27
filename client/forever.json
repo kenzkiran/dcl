@@ -1,0 +1,10 @@
+// forever/development.json
+{
+    // Comments are supported
+    "uid": "app",
+    "append": false,
+    "watch": false,
+    "script": "server.js",
+    "sourceDir": "./",
+    "logFile": "./dcl.log"
+}

@@ -1,0 +1,14 @@
+<div class="col-md-10 col-sm-8 dcl-list-item">
+       <div class="col-md-4 col-sm-6">
+           <div class="title-big">
+               <a ui-sref="teams.instance({id:team.id})" style="text-transform: capitalize">{{team.name}} {{postfix}}</a>
+           </div>
+           <div class="text-center">
+               <span class="info-bold"> {{team.location.name}}</span>
+           </div>
+       </div>
+       <div class="col-md-5 col-sm-6">
+           <div class="title-big player-name"> {{team.captain.firstName}} {{team.captain.lastName}}</div>
+           <div class="info-bold text-center player-name"> {{team.vice.firstName}} {{team.vice.lastName}} (VC), {{team.admin.firstName}} {{team.admin.lastName}} (Admin) </div>
+       </div>
+</div>

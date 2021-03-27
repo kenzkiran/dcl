@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-10 text-center dcl-title-box team">Tasks</div>
+</div>
+
+<div ng-repeat="t in tasks">
+  <div class="col-md-10 col-sm-8 dcl-list-item">
+    <div class="col-md-2">
+      <span uib-tooltip="Request New Team Task" style="font-size: 16px;font-weight: bolder;"> {{t.tasktype}} </span>
+    </div>
+    <div class="col-md-2">
+      <span> <strong> Name: </strong> {{t.data.name}} ,</span> <span style="font-color: Darkgreen"> <strong> Type:
+        </strong>{{t.data.type}} </span>
+    </div>
+    <div class="col-md-2">
+      <span style="text-transform: capitalize"> Requested By: {{t.requester.firstName}}
+        {{t.requester.lastName}}</span>
+    </div>
+    <div class="col-md-2">
+      <span> Requested Date: {{t.created | date:'dd-MMMM-yyyy H-mm'}}</span>
+    </div>
+    <div ng-if="t.status === 'progress'">
+      <div class="col-md-2">
+        <button class="btn btn-success" ng-click="Approve(t)">Approve</button>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-danger" ng-click="Reject(t)">Reject</button>
+      </div>
+    </div>
+    <div ng-if="t.status !== 'progress'">
+        <div class="col-md-2">
+            <span> <strong> Result: </strong> <span ng-class="{'red': t.result === 'rejected', 'green': t.result !== 'rejected'}" style="text-transform: capitalize"> {{t.result}} </span>
+        </div>
+    </div>
+  </div>
+</div>

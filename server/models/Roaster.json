@@ -1,0 +1,29 @@
+{
+  "name": "Roaster",
+  "strict": true,
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "doc": "Unique Id"
+    }
+  },
+  "relations": {
+    "tourney": {
+      "type": "belongsTo",
+      "model": "Tournament",
+      "foreignKey": "tournamentId"
+    },
+    "team": {
+      "type": "belongsTo",
+      "model": "Team",
+      "foreignKey": "teamId"
+    },
+    "penalties": {
+      "type": "hasMany",
+      "model": "Penalty",
+      "foreignKey": "roasterId"
+    }
+  }
+}

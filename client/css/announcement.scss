@@ -1,0 +1,49 @@
+//TODO: Remove upper  #dclnew later
+#dclnew {
+  .announcement {
+    background-color: $dcl-announcement-header-bg;
+    color: $dcl-announcement-header-font-color;
+  }
+    .announcement-instance-header {
+    @extend .box;
+    margin: 20px 0px 10px 0px;
+    padding: 25px;
+    background-color: $dcl-announcement-header-bg;
+    color: $dcl-announcement-header-font-color;
+
+    .info {
+      color: $dcl-announcement-header-info-font-color;
+    }
+  }
+    .no-gutter{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    .text-align-left{
+        text-align: left !important;
+    }
+}
+    .top-buffer { 
+        margin-top:20px !important; 
+    }
+    .beautified-date {
+        display: inline-block;
+        float: left;
+        width: 100px;
+        text-align: center;
+        line-height: 90%;
+        span{
+            display: block;
+        }
+        .month{
+            font-size: 75%;
+        }
+        .date{
+            font-size: 120%;
+        }
+        .year{
+            font-size: 75%;
+        }
+    }    
+    

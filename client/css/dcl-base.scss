@@ -1,0 +1,187 @@
+@import 'themes';
+
+#dclnew {
+
+  textarea:focus, input:focus{
+    outline: none;
+  }
+
+  .capitalize {
+    text-transform: capitalize;
+  }
+
+  .box {
+    //bootstrap adds a -15px margin-left so compensating it
+    margin: 10px 0px 10px 0px;
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .dcl-static-box {
+    @extend .box;
+    border: solid 1px $dcl-item-border-color;
+    background-color: $dcl-list-item-bg-color;
+  }
+
+  /* dcl list item defaults */
+  .dcl-list-item {
+    @extend .box;
+    border: solid 1px $dcl-item-border-color;
+    background-color: $dcl-list-item-bg-color;
+    text-align: center;
+
+    .title-big {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .title-md {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .title-sm {
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .info-bold {
+      font-size: 15px;
+      color: #6E6C70;
+      font-weight: bold;
+    }
+  }
+
+
+
+  .dcl-list-item:hover {
+    background-color: $dcl-list-item-bg-color-hover;
+    color: #0B0B0B;
+    box-shadow: 5px 5px 5px 2px #2b3d4f;
+  }
+
+  .dcl-title-box {
+    @extend .box;
+    padding: 10px;
+    font-size: 24px;
+    border-radius: 5px;
+  }
+
+  .item-tools-base {
+    margin-top: 16px;
+    margin-bottom: 5px;
+    margin-right: 25px;
+    text-align: center;
+    font-size: 26px;
+  }
+
+  .item-tools {
+    @extend .item-tools-base;
+  }
+
+  .item-tools:hover {
+    text-shadow: #6E6C70 0.1em 0.2em 0.1em;
+    transform: scale(1.2);
+    transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+  }
+
+
+  /* top toolbar styles */
+  .tool-container {
+    margin: 15px 0px 15px 0px;
+    height: 62px;
+    border: solid 1px #ECECEC;
+    border-radius: 25px;
+  }
+
+  .tool-info {
+    height: 100%;
+    padding: 15px 20px 15px 20px;
+    font-size: 14px;
+
+    .glyphicon {
+      font-size: 30px;
+    }
+
+    .selected  {
+      color: $dcl-toolinfo-icon-selected;
+    }
+
+    .lefty {
+      margin-right: 15px;
+    }
+    .righty {
+      margin-left: 15px;
+    }
+
+    label {
+      margin: 5px 5px 0 0;
+    }
+
+    .letterBtn {
+
+      .glyphicon {
+        font-size:18px;
+        position: relative;
+        top: 1px;
+      }
+
+      padding: 0 4px 0 4px;
+      font-weight: bolder;
+      font-size: 22px;
+      margin-top: -24px;
+      min-width: 28px;
+      border-radius: 8px;
+    }
+  }
+  /* end of toolbar styles */
+
+  .searchboxbase  {
+    border: 1px solid gainsboro;
+    border-radius: 20px;
+  }
+  .searchbox {
+    @extend .searchboxbase;
+    padding-left: 10px;
+    font-size: 14px;
+    width: 250px;
+    height: 30px;
+  }
+
+  .searchboxbase:focus {
+    border: 1px solid rgba(14, 9, 211, 0.4);
+    box-shadow: 0 0 5px #008aff;
+  }
+
+  a { text-decoration: none; }
+
+  .highlighted {
+    background-color: #FEEE9D;
+  }
+
+  .odd {
+    background-color: #f2f2f2;
+  }
+
+  .even {
+    background-color: white;
+  }
+
+  .dcl-error-msg {
+    margin-top:40px;
+    padding: 15px;
+    border-radius: 10px;
+    font-style: inherit;
+    font-weight: 300;
+    color: black;
+    text-align: center;
+    background-color: rgba(220, 67, 85, 0.3);
+
+    .header {
+      font-weight: bolder;
+      font-size: 30px;
+    }
+
+  }
+}

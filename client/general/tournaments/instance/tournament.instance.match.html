@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-12 tool-container">
+        <div class="tool-info">
+            <input type="text" class="searchbox pull-right" placeholder="Search by Team Name" ng-model="searchText">
+            <div class="pull-right">
+                <label uib-tooltip="Search Teams & Umpiring"><input type="radio" ng-model="searchCategory" value="both" ng-init="searchCategory='both'"> Both</label>
+                <label uib-tooltip="Search Umpire Only"> <input type="radio" ng-model="searchCategory" value="umpire"> Umpire Only</label>
+                <label uib-tooltip="Search Teams Only"><input type="radio" ng-model="searchCategory" value="team"> Teams Only </label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <table class="table table-condensed table-striped">
+        <tr>
+            <th class="col-md-1 col-sm-1 text-center">Date</th>
+            <th class="col-md-1 col-sm-2 text-center">Team 1</th>
+            <th class="col-md-1 col-sm-2 text-center">Team 2</th>
+            <th class="col-md-1 col-sm-2 text-center">Umpire 1</th>
+            <th class="col-md-1 col-sm-2 text-center">Umpire 2</th>
+            <th class="col-md-1 col-sm-2 text-center">Ground</th>
+            <th class="col-md-2 col-sm-2 text-center">Result</th>
+            <th class="col-md-1 col-sm-2 text-center">Score</th>
+        </tr>
+    <tr ng-repeat="match in matches | ptfSearchMatch:searchText:searchCategory">
+        <td class="text-center">{{match.date | date:'MM/dd/yy'}}</td>
+        <td class="text-center"><a ui-sref="teams.instance({'id': match.teamOne.id})" ng-bind-html="highlight(match.teamOne.name)"> {{match.teamOne.name}} </a></td>
+        <td class="text-center"><a ui-sref="teams.instance({'id': match.teamTwo.id})" ng-bind-html="highlight(match.teamTwo.name)"> {{match.teamTwo.name}}</a></td>
+        <td class="text-center"><a ui-sref="teams.instance({'id': match.umpireOne.id})" ng-bind-html="highlight(match.umpireOne.name)"> {{match.umpireOne.name}}</a></td>
+        <td class="text-center"><a ui-sref="teams.instance({'id': match.umpireTwo.id})" ng-bind-html="highlight(match.umpireTwo.name)"> {{match.umpireTwo.name}}</a></td>
+        <td class="text-center"><a ui_sref="grounds.list({id:match.ground.id})">{{match.ground.name}}</a></td>
+        <td class="text-center">{{match.result}}</td>
+        <td class="text-center"><a ui_sref="matches.iview({id: match.id})"> Scorecard </a></td>
+    </tr>
+    </table>
+</div>

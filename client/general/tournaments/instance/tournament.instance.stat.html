@@ -1,0 +1,83 @@
+
+    <div class="row"><h3> Summary </h3></div>
+    <div class="row">
+    <table class="table table-condensed table-striped">
+        <tr style="border: 1px solid darkgray;">
+            <th class="col-md-1 col-sm-1  text-center">Statistics</th>
+            <th class="col-md-1 col-sm-1  text-center">Player Name</th>
+            <th class="col-md-1 col-sm-1  text-center">Team Name</th>
+            <th class="col-md-1 col-sm-1  text-center">Figures</th>
+        </tr>
+        <tr  ng-repeat="sum in summary">
+            <th class="text-center">{{sum.Statistics}}</th>
+            <th class="text-center">{{sum.PlayerName}}</th>
+            <th class="text-center">{{sum.TeamName}}</th>
+            <th class="text-center">{{sum.Figures}}</th>
+        </tr>
+    </table>
+    </div>
+    <div class="row"> <h3> Top Batting Aggregates </h3></div>
+    <div class="row">
+    <table class="table table-condensed table-striped">
+        <tr style="border: 1px solid darkgray;">
+            <th class="col-md-1 col-sm-1 text-center">#</th>
+            <th class="col-md-2 col-sm-2 text-center">Player Name</th>
+            <th class="col-md-1 col-sm-1 text-center">Team Name</th>
+            <th class="col-md-1 col-sm-1 text-center">Matches</th>
+            <th class="col-md-1 col-sm-1 text-center">Inn</th>
+            <th class="col-md-1 col-sm-1 text-center">NO</th>
+            <th class="col-md-1 col-sm-1 text-center">Runs</th>
+            <th class="col-md-1 col-sm-1 text-center">Highest</th>
+            <th class="col-md-1 col-sm-1 text-center">Average</th>
+            <th class="col-md-1 col-sm-1 text-center">SR%</th>
+            <th class="col-md-1 col-sm-1 text-center">100</th>
+            <th class="col-md-1 col-sm-1 text-center">50</th>
+        </tr>
+        <tr ng-repeat="p in topRunAggregate" class="text-center">
+            <td>{{$index + 1}}</td>
+            <td class="text-left">{{p.firstName + " " + p.lastName}}</td>
+            <td>{{p.teamName}}</td>
+            <td>{{p.stats.batting.totalMatches}}</td>
+            <td>{{p.stats.batting.totalInnings}}</td>
+            <td>{{p.stats.batting.totalNotOuts}}</td>
+            <td>{{p.stats.batting.totalRuns}}</td>
+            <td>{{p.stats.batting.topScore.runs}}</td>
+            <td>{{p.stats.batting.average}}</td>
+            <td>{{p.stats.batting.strikeRate}}</td>
+            <td>{{p.stats.batting.totalHundreds}}</td>
+            <td>{{p.stats.batting.totalFifties}}</td>
+        </tr>
+    </table>
+    </div>
+    <div class="row"><h3> Top Wicket Takers</h3></div>
+    <div class="row">
+    <table class="table table-condensed table-striped">
+        <tr style="border: 1px solid darkgray;">
+            <th class="col-md-1 col-sm-1 text-center">#</th>
+            <th class="col-md-2 col-sm-2 text-center">Player Name</th>
+            <th class="col-md-1 col-sm-1 text-center">Team Name</th>
+            <th class="col-md-1 col-sm-1 text-center">Matches</th>
+            <th class="col-md-1 col-sm-1 text-center">Balls</th>
+            <th class="col-md-1 col-sm-1 text-center">Wickets</th>
+            <th class="col-md-1 col-sm-1 text-center">Runs</th>
+            <th class="col-md-1 col-sm-1 text-center">E.Rate</th>
+            <th class="col-md-1 col-sm-1 text-center">Avg</th>
+            <th class="col-md-1 col-sm-1 text-center">Best</th>
+            <th class="col-md-1 col-sm-1 text-center">5W</th>
+        </tr>
+        <tr ng-repeat="p in topWicketTakers" class="text-center">
+            <td>{{$index + 1}}</td>
+            <td class="text-left">{{p.firstName + " " + p.lastName}}</td>
+            <td>{{p.teamName}}</td>
+            <td>{{p.stats.totalMatches}}</td>
+            <td>{{p.stats.bowling.totalBalls}}</td>
+            <td>{{p.stats.bowling.totalWickets}}</td>
+            <td>{{p.stats.bowling.totalRuns}}</td>
+            <td>{{p.stats.bowling.economyRate}}</td>
+            <td>{{p.stats.bowling.average}}</td>
+            <td>{{p.stats.bowling.best}}</td>
+            <td>{{p.stats.bowling.total5wickets}}</td>
+        </tr>
+    </table>
+    </div>
+

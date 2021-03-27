@@ -1,0 +1,17 @@
+{
+  "name": "MatchType",
+  "strict": true,
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "doc": "Unique Match Type Id"
+    },
+    "matchType": {
+      "type": "string",
+      "required": true,
+      "doc": "T-20/ ODI/ or is it Summer bash, Summer league etc"
+    }
+  }
+}

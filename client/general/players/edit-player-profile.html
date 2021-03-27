@@ -1,0 +1,65 @@
+<div ng-if="status === 'init'">
+    <h3>Getting Player Info...</h3>
+</div>
+<div ng-if="status === 'error'">
+    <div class="dcl-error-msg">
+        <p class="header" >Oops Player Not Found!</p>
+    </div>
+</div>
+<div ng-if="status === 'success'">
+<div>
+    <div class="row">
+        <div class="col-md-4 player-profile-name">
+            {{player.firstName}}   {{player.lastName}}
+        </div>
+        <div class="col-md-2">
+            <a ui-sref="players.editsettings"><i class="glyphicon glyphicon-user" style="font-size:20px; position:relative; top:8px;"></i></span></a>
+        </div>
+    </div>
+    <div class="row">
+        <hr/>
+    </div>
+</div>
+
+<div class="forms-player">
+<form>
+    <div class="form-group">
+        <label for="btstyle">Batting Style</label>
+        <select id="btstyle" class="form-control" id="battingStyle" ng-model="player.battingStyle"
+                ng-options="bs for bs in battingStyles"></select>
+    </div>
+    <div class="form-group">
+        <label for="bwlstyle">Bowling Style</label>
+        <select id="bwlstyle" class="form-control" id="bowlingStyle" ng-model="player.bowlingStyle"
+                ng-options="bs for bs in bowlingStyles"></select>
+    </div>
+    <div class="form-group">
+            <label for="WicketKeeper">Wicket Keeper ?</label>
+            <select class="form-control" id="active" ng-model="player.isWicketKeeper"
+                    ng-options="a for a in [true, false]"></select>
+    </div>
+    <div class="form-group">
+        <label for="Active">Active</label>
+        <select class="form-control" id="active" ng-model="player.active"
+                ng-options="a for a in [true, false]"></select>
+    </div>
+    <form class="form-inline">
+        <div class="form-group" style="margin-right: 20px;">
+            <label>Certified: {{player.certified}}</label>
+        </div>
+        <div class="form-group" ng-show="Player.certified">
+            <label>Level: {{player.certLevel}}</label>
+        </div>
+    </form>
+    <div class="form-group">
+        <button class="btn btn-success" ng-click="save()">SAVE
+        </button>
+        <button class="btn btn-warning">
+            <a ui-sref="players.instance({id: player.id})">CANCEL</a>
+        </button>
+    </div>
+    <hr>
+    <div class="bg-info" style="color: white; padding: 5px;"> Contact DCL Admin if certification status is not correct !</div>
+    <hr>
+</div>
+</div>

@@ -1,0 +1,17 @@
+{
+  "name": "TournamentType",
+  "strict": true,
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "doc": "Unique Tournament Id"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "doc": "Summer League etc"
+    }
+  }
+}

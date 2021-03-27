@@ -1,0 +1,37 @@
+{
+  "name": "Ground",
+  "strict": true,
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "doc": "Unique Ground Id"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "doc": "Ground Name"
+    },
+    "address": {
+      "type": "string",
+      "doc": "Address free form. No validation done on this"
+    },
+    "city": {
+      "type": "string",
+      "required": true,
+      "doc": "City Name"
+    },
+    "url": {
+      "type": "string",
+      "default": "/path/for/ground/googlemaps",
+      "doc": "location of the ground"
+    },
+    "active": {
+      "type": "boolean",
+      "default": "true",
+      "doc": "Is in use"
+    }
+  }
+}
+

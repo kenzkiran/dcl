@@ -1,0 +1,15 @@
+<div>
+    <div class="row">
+        <div class="col-md-10 text-center dcl-title-box tournament">Tournaments</div>
+    </div>
+    <!--
+    <div ng-repeat="t in tournaments">
+        <div class="row">
+            <div class="col-md-10 dcl-list-item"> <a ui-sref="tournaments.instance.matches({id: t.id})">  {{t.name}} </a></div>
+        </div>
+    </div>
+    -->
+    <div ng-repeat="t in tournaments">
+        <div class="row" tournament='t' ptf-tournament-list></div>
+    </div>
+</div>

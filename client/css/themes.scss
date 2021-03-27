@@ -1,0 +1,59 @@
+/* RGB from color palette */
+$color1: rgb(182, 86, 11);
+$color2: rgba(65, 157, 120, 1);
+$color3: rgb(21, 3, 65);
+
+/* General */
+$dcl-list-item-bg-color: #ECF0F1;
+$dcl-item-border-color: #ECECEC;
+$dcl-list-item-bg-color-hover: #E8F4FF;
+
+$dcl-won-label-color: #1a804c;
+$dcl-lost-label-color: #ff4016;
+$dcl-nr-label-color: #2d2d2d;
+
+/* tournament specific styles */
+$dcl-tournament-header-bg: #375A7F;
+$dcl-tournament-header-font-color: white;
+$dcl-tournament-header-info-font-color: #DDD;
+
+/* teams specific styles */
+$dcl-team-header-bg: #128F76;
+$dcl-team-header-font-color: white;
+
+/*label colors for captain,vice captain and admin role players*/
+$dcl-team-captain-label-color:$color1;
+$dcl-team-vicecaptain-label-color:$color2;
+$dcl-team-admin-label-color:$color3;
+
+
+$dcl-player-active-color: $color3;
+$dcl-player-inactive-color: gainsboro;
+
+$dcl-team-active-color: $color2;
+$dcl-team-inactive-color: gainsboro;
+
+/* match specific styles */
+//$dcl-match-view-header-bg: #b55008;
+$dcl-match-view-header-bg: #07407f;
+$dcl-match-view-resultbar-bg: #07407f;
+$dcl-match-view-header-font-color: white;
+$dcl-match-score-header-bg: #00a1ff;
+
+/* ground specific styles */
+$dcl-ground-header-bg: #375A7F;
+$dcl-ground-header-font-color: white;
+$dcl-ground-selected-bg: #375A7F;
+$dcl-ground-selected-color: white;
+
+/* player specific styles */
+$dcl-player-header-bg: #375A7F;
+$dcl-player-header-font-color: white;
+
+/* dcl tool info stuff */
+$dcl-toolinfo-icon-selected: #128F76;
+
+/* announcement specific styles */
+$dcl-announcement-header-bg: #375A7F;
+$dcl-announcement-header-font-color: white;
+$dcl-announcement-header-info-font-color: #DDD;

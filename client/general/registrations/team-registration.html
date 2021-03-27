@@ -1,0 +1,47 @@
+<div>
+  <div class="row">
+    <div class="col-xs-12 text-center dcl-title-box registrations">Team Registration</div>
+  </div>
+  <div class="wrapper">
+    <form class="form-signup">
+      <h2 class="form-signin-heading">New Team Registration</h2>
+       <!-- CASE: Init, Take Input -->
+      <div ng-if="status === 'init'">
+        <div class="form-group" ng-class="{'has-error': !newTeam.name}">
+          <label for="name">Name</label>
+          <input class="form-control" ng-disabled="disableInput" placeholder="Enter Team name"
+            id="teamName" ng-model="newTeam.name" ng-required="true">
+        </div>
+        <div class="form-group" ng-class="{'has-error': !newTeam.location}">
+          <label for="name">Location</label>
+          <input class="form-control" ng-disabled="disableInput" placeholder="Enter Location/City"
+            id="teamLocation" ng-model="newTeam.location" ng-required="true">
+        </div>
+        <div class="form-group">
+          <label for="active">Type</label>
+          <select class="form-control" ng-disabled="disableInput" id="type" ng-model="newTeam.type"
+            ng-options="a for a in types"></select>
+        </div>
+        <button class="btn btn-lg btn-warning btn-block" ng-disabled="shouldDisable()" type="verify" ng-click="verify()">Check
+            Availability</button>
+      </div>
+      <!-- CASE: VERIFIED, Only Output-->
+      <div ng-if="status === 'verified'">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <output class="form-control" id="teamNameOutput">{{newTeam.name}}</output>
+        </div>
+        <div class="form-group">
+          <label for="name">Location</label>
+          <output class="form-control" id="teamLocationOutput">{{newTeam.location}}</output>
+        </div>
+        <div class="form-group">
+          <label for="active">Type</label><output class="form-control">{{newTeam.type}}</output>
+        </div>
+        <button class="btn btn-lg btn-success btn-block" type="submit"
+        ng-click="submit()">Submit Request</button>
+      </div>
+      <span ng-if="showResult"> {{statusString}}</span>
+  </form>
+</div>
+</div>

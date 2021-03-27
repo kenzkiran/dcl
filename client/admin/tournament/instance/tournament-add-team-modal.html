@@ -1,0 +1,38 @@
+<div class="modal-header">
+    <div class="modal-title">
+        <h3> {{tournament.name}} : Add Teams </h3>
+    </div>
+</div>
+<div class="modal-body" id="dclnew">
+    <div class="tournament-add-team-modal">
+        <div>
+            <div class="team-band"><span>Current Teams: </span></div>
+            <div ng-repeat="team in currentTeams">
+                <div class="team-row" ng-class-odd="'odd'">
+                    <span class="glyphicon glyphicon-minus-sign lefty remove-team-icon" aria-hidden="true" ng-click="removeTeam(team.id)"></span>
+                    <span class="team-name"> {{team.name + "  "}} </span>
+                </div>
+            </div>
+            <div ng-if="currentTeams.length == 0">
+                <span style="color: #e8360a; font-weight: bolder;"> No Teams have been Added</span>
+            </div>
+        </div>
+        <div class="tournament-add-team-modal">
+            <div class="team-band"><span>Remaining Teams: </span></div>
+            <div style="height: 300px; overflow-y:auto">
+                <div ng-repeat="team in remainingTeams">
+                    <div class="team-row" ng-class-odd="'odd'">
+                        <span class="glyphicon glyphicon-plus-sign lefty add-team-icon" aria-hidden="true" ng-click="addTeam(team.id)"></span>
+                        <span class="team-name"> {{team.name + "  "}} </span>
+                    </div>
+                </div>
+                <div ng-if="remainingTeams.length == 0">
+                    <span style="color: #e8360a; font-weight: bolder;"> No More Teams to Add</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" ng-click="cancel()">Done</button>
+    </div>
+</div>

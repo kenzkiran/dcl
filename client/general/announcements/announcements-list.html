@@ -1,0 +1,21 @@
+<div>
+    <div class="row">
+        <div class="col-md-10 text-center dcl-title-box announcement">Announcements</div>
+    </div>
+    <div ng-if="showLoading">Loading...</div>
+    <div ng-if="!showLoading">
+    <div class="row"><u>Showing last 100 announcements</u></div>
+    <div ng-repeat="announcement in announcements">
+        <div class="row">
+            <div class="col-md-10 dcl-list-item">
+                <div class="col-md-5 beautified-date no-gutter">
+                    <span class="month">{{announcement.published|date:'MMM'}}</span>
+                    <span class="date">{{announcement.published|date:'dd'}}</span>
+                    <span class="year">{{announcement.published|date:'yyyy'}}</span>
+                </div>
+                <div class="col-md-5 info-bold text-align-left">
+                <a ui-sref="announcements.instance({id: announcement.id})"> {{announcement.title}} </a></div>
+            </div>
+        </div>
+       </div>
+    </div>

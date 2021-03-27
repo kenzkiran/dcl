@@ -1,0 +1,32 @@
+{
+  "name": "ScoreSheet",
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "doc": "Unique ScoreSheet Id"
+    },
+    "status" : {
+      "type": "string",
+      "default": "saved",
+      "doc": "saved or submit, see details on submit behavior"
+    },
+    "saved" : {
+      "type": "Date",
+      "doc": "Last Saved Time"
+    },
+    "score" : {
+      "type": "object",
+      "required": true,
+      "doc": "A flattened score sheet"
+    }
+  },
+  "relations": {
+    "match": {
+      "model": "Match",
+      "type": "belongsTo",
+      "foreignKey": "matchId"
+    }
+  }
+}

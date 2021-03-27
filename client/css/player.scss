@@ -1,0 +1,51 @@
+#dclnew {
+  .player {
+    background-color: $dcl-player-header-bg;
+    color: $dcl-player-header-font-color;
+  }
+
+
+  .forms-player {
+    max-width: 480px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+
+
+  .linkDisabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .player-name {
+    text-transform: capitalize;
+  }
+  
+  .player-profile-name {
+    font-size: 24px;
+    color: black;
+    text-align: left;
+    font-weight: bolder;
+    text-transform: capitalize;
+  }
+
+  .player-info-header {
+    font-size: 16px;
+    color: #6E6C70;
+    font-weight: bold;
+  }
+
+  .player-info-details {
+    font-size: 16px;
+    color: black;
+  }
+
+  .stats {
+    table, th {
+      text-align: center;
+    }
+  }
+}
+
