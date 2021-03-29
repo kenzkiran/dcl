@@ -1,0 +1,20 @@
+{
+  "shadow": true,
+  "bitwise": true,
+  "browser": true,
+  "curly": true,
+  "eqeqeq": true,
+  "esnext": true,
+  "latedef": "nofunc",
+  "noarg": true,
+  "node": true,
+  "strict": false,
+  "undef": true,
+  "unused": true,
+  "jasmine": true,
+  "globals": {
+    "angular": false,
+    "expect": true,
+    "_": true
+  }
+}
