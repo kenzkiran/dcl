@@ -9,6 +9,20 @@ module.exports = function (AdminTasks) {
     }
   }
 
+  function SendTestEmail(email) {
+    AdminTasks.app.models.Email.send({
+      to: email,
+      from: 'dclweb@yahoo.com',
+      subject: 'Test Email',
+      html: "<h2> This is a test email from DCL </h2>"
+    }, function(err, mail) {
+      console.log('email sent!');
+      if (err) {
+        console.log("Error sending New Team Approval to: " +  email + " error: " + err);
+      }
+    });
+  }
+
   function SendSuccessEmail(newtask, reason) {
     var newteamname = newtask.data.name;
     var requester_email = newtask.requester.owner.email;
@@ -134,6 +148,11 @@ module.exports = function (AdminTasks) {
     });
   }
 
+  AdminTasks.sendtestemail = function (email, cb) {
+    SendTestEmail(email);
+    cb(null, {success: true});
+  }
+
   AdminTasks.rejectnewteam = function (id, reason, cb) {
     AdminTasks.approveOrRejectNewTeam(false, id, reason, cb);
   }
@@ -170,6 +189,21 @@ module.exports = function (AdminTasks) {
       ],
       returns: { arg: 'result', type: 'object', root: true },
       http: { path: '/:id/approvenewteam', verb: 'post' }
+    }
+  );
+
+    /**
+   * Add remoted method to request new team addition
+   */
+  AdminTasks.remoteMethod(
+    'sendtestemail',
+    {
+      description: "Send test email",
+      accepts: [
+        { arg: 'email', type: 'string', required: true }
+      ],
+      returns: { arg: 'result', type: 'object', root: true },
+      http: { path: '/sendtestemail', verb: 'post' }
     }
   );
 }

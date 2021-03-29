@@ -3,7 +3,7 @@
         <!-- Match Header -->
         <div class="match-view-header">
             <div class="row resultbar">
-                <div class="col-md-3"><a ui-sref="matches.iedit({id: match.id})" ng-show="!match.lock"><h2 class="label label-primary">Edit</h2></a></div>
+                <div class="col-md-3"><a ui-sref="matches.iedit({id: match.id})" ng-show="canShowEdit"><h2 class="label label-primary">Edit</h2></a></div>
                 <div class="col-md-6 text-center"> {{headerWinLossTitle}} </div>
                 <div class="col-md-3"></div>
             </div>

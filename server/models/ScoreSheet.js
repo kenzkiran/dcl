@@ -96,13 +96,17 @@ module.exports = function(ScoreSheet) {
     }
 
     function createInning(inning) {
-        log.info("Creating new Inning  ", inning.id);
+        log.info("Creating new Inning : ", inning);
         var defer = Q.defer();
         var Inning = ScoreSheet.app.models.Inning;
-        inning.id = convertStringToId(inning.id);
+        if (inning.id) {
+            inning.id = convertStringToId(inning.id);
+        } else {
+            delete inning.id;
+        }
         inning.battingTeamId = convertStringToId(inning.battingTeamId);
         inning.bowlingTeamId = convertStringToId(inning.bowlingTeamId);
-        //log.info("Now upserting inning: ", inning);
+        log.info("Now upserting inning: ", inning);
         process.nextTick(function() {
             Inning.upsert(inning, function(err, inn) {
                 if (!err && inn) {

@@ -25,8 +25,8 @@ module.exports = function ($rootScope, $scope, $log, $state, Player) {
         if (userId) {
           Player.getPlayerByUserId(userId).then(
             function (p) {
-              $state.go('players.instance', {id: p[0].id});
               $rootScope.checkLogin();
+              $state.go('players.instance', {id: p[0].id});
             }, function (err) {
               $state.go('about');
               console.log("Failed to get Player details", err);

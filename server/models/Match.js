@@ -86,10 +86,11 @@ module.exports = function(Match) {
      * @param cb {callback} Standard callback with args: err, result
      */
     Match.scoreSheet = function(id, cb) {
-        Match.findById(id, {"include": ["teamOne", "teamTwo", "ground", "umpireOne", "umpireTwo"]}, function(err, match) {
+        Match.findById(id, {"include" : ["teamOne","teamTwo","ground","umpireOne","umpireTwo"]}, function(err, match) {
             if (err && !match) {
                 return cb(err, match);
             }
+
             //log.info("Found match: ", match);
             // Now that we found match, see if the scoresheet is submitted ??
             if (match.scoreSheetStatus !== MATCH_SCORESHEET_STATUS.SUBMIT) {
@@ -106,7 +107,7 @@ module.exports = function(Match) {
 
             // now fetch Innings and their bowling and batting scores
             getInnings(match.inningOneId, function(err, inning1) {
-                var newMatch = match.toObject();
+                var newMatch = match.toJSON();
                 if (err || !inning1) {
                     return cb(err, newMatch);
                 }
@@ -117,6 +118,7 @@ module.exports = function(Match) {
                         return cb(err, newMatch);
                     }
                     newMatch.inningTwo = inning2;
+                    console.log(newMatch);
                     return cb(null, newMatch);
                 });
             });

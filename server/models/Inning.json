@@ -22,7 +22,7 @@
            "default": 0,
            "doc": "Byes against keeper"
        },
-       "legByes": {
+       "legbyes": {
            "type": "number",
            "default": 0,
            "doc": "leg byes by the bowling team"
@@ -72,7 +72,7 @@
         "default": 0.0,
         "doc": "DERIVED - Total Runs/Total Overs"
       },
-       "revisedtotal": {
+       "revisedTotal": {
             "type": "number",
             "default": 0,
             "doc": "Revised target in case of rain or other interruptions"

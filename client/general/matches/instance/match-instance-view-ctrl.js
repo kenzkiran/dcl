@@ -1,5 +1,7 @@
 'use strict';
 
+const { match } = require("../../teams");
+
 var MATCH_STATUS = {
     INIT: "init",
     ERROR: "error",
@@ -17,6 +19,7 @@ module.exports = function ($log, $rootScope, $scope, $timeout, $stateParams, $fi
     $scope.firstBattingStyle = "runner";
     $scope.secondBattingStyle = "runner";
     $scope.headerWinLossTitle = "Winner";
+    $scope.canShowEdit = false;
 
     var _teamOne;
     var _teamTwo;
@@ -25,6 +28,12 @@ module.exports = function ($log, $rootScope, $scope, $timeout, $stateParams, $fi
     var _inningOne;
     var _inningTwo;
 
+    var checkShowEdit = function () {
+        $rootScope.checkLogin(function(player) {
+            $scope.canShowEdit = player && !$scope.match.lock;
+        });
+    };
+    
     $scope.inningsRunRate = function(order) {
         var inn = (order === 1) ?  _inningOne: _inningTwo;
         return inn.runRate.toFixed(2);
@@ -161,6 +170,7 @@ module.exports = function ($log, $rootScope, $scope, $timeout, $stateParams, $fi
      * @param match
      */
     function extractMatchDetails(match) {
+        console.log(match);
         _teamOne = match.teamOne;
         _teamTwo = match.teamTwo;
         $scope.teams.push(angular.copy(match.teamOne));
@@ -219,6 +229,7 @@ module.exports = function ($log, $rootScope, $scope, $timeout, $stateParams, $fi
                        $scope.match = res;
                        $log.info("Match ScoreSheet retrieved:", res);
                        extractMatchDetails($scope.match);
+                       checkShowEdit();
                    }).catch(function (err) {
                        $log.info("Match ScoreSheet retrieval error", err);
                        var statusString = "ScoreSheet Retrieval Error for Match:";
