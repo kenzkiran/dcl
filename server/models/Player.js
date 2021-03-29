@@ -370,7 +370,7 @@ module.exports = function (Player) {
             return cb(err);
           }
 
-          console.log("Sending an email ");
+          console.log("Sending an email to: ", newplayeruser.email);
           var options = {
             type: 'email',
             to: newplayeruser.email,

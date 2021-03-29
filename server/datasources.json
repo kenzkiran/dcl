@@ -18,11 +18,15 @@
           {
             "type": "smtp",
             "host": "smtp.mail.yahoo.com",
-            "secure": true,
-            "port": 465,
+            "secure": false,
+            "port": 587,
+            "tls": {
+              "rejectUnauthorized": false,
+              "requireTLS": true
+            },
             "auth": {
               "user": "dclweb@yahoo.com",
-              "pass": "siznvzofjbektcty"
+              "pass": "usvgzbtxnlfrbunf"
             }
           }
         ]
