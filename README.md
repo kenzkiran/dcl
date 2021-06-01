@@ -166,6 +166,8 @@ scp package.tgz  root@<HOST_MACHINE_IP>:/root/package.tgz
 * `npm install` - Install server dependency.
 * IMP Note: No need to build the client, as the 'dist' folder already contains the client.
 * `forever list` - List the forever started processes.
+* If forever is not installed on server install using the following:
+* `npm install -g forever`
 * IMP Note: If you don't have mongod installed, use the following link to install:
 * https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
