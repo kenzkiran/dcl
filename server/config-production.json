@@ -1,8 +1,8 @@
 {
   "restApiRoot": "/api",
-  "host": "167.172.214.28",
+  "host": "157.245.133.22",
   "port": 80,
-  "url": "http://167.172.214.28:80/",
+  "url": "http://157.245.133.22:80/",
   "legacyExplorer": false,
   "bloggerBlogId": "5647976881277887395",
   "logoutSessionsOnSensitiveChanges": true,
