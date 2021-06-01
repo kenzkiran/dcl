@@ -129,13 +129,37 @@ The last task is a packaging task:
 
 ### How To Upload New Release:
 
-#### On the local machine 
+### Step 1: Change HOST IP on the config-production.json
+ * Replace HOST_MACHINE_IP with the correct host machine IP.
+ * This is the config file, production server will use.
+ * Current Digital Host Machine IP: 157.245.133.22
+```
+{
+  "restApiRoot": "/api",
+  "host": "<HOST_MACHINE_IP>",
+  "port": 80,
+  "url": "http://<HOST_MACHINE_IP>:80/",
+  "legacyExplorer": false,
+  "bloggerBlogId": "5647976881277887395",
+  "logoutSessionsOnSensitiveChanges": true,
+  "remoting": {
+    "errorHandler": {
+      "disableStackTrace": false
+    }
+  }
+}
+```
+### Step 2: Prepare Release Package on Local Machine
+
 * Run the `grunt release` command from base directory.
 * A release package : 'package.tgz' is created.
 * Check with R.Ramachandra for credentials.
-* scp package.tgz  root@45.55.25.115:/root/package.tgz
+```
+scp package.tgz  root@<HOST_MACHINE_IP>:/root/package.tgz
+```
 
-#### On the remote machine (our host: 45.55.25.115)
+
+### Step 3: On the remote machine (our host): 
 * Make sure we have copied 'package.tgz' using the above mentioned `scp` command.
 * Untar the package: `tar -xzf package.tgz`
 * `cd package/server` - Go to server folder
@@ -144,6 +168,9 @@ The last task is a packaging task:
 * `forever list` - List the forever started processes.
 * If forever is not installed on server install using the following:
 * `npm install -g forever`
+* IMP Note: If you don't have mongod installed, use the following link to install:
+* https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+
 
 ```
 // Output looks like this.
